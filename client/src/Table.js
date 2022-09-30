@@ -8,6 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 
+
 function createData(id, plot, type, service, time,status) {
   return { id, plot, type, service, time,status };
 }
@@ -20,12 +21,19 @@ const rows = [
   createData('ID #1041', "South Plot D","Crop","Rental:Data Collection", "09/12/22","Complete"),
   createData('ID #1051', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
   createData('ID #1061', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
+  createData('ID #1051', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
+  createData('ID #1061', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
+  createData('ID #1051', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
+  createData('ID #1061', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
+  createData('ID #1051', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
+  createData('ID #1061', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
 ];
 
 export default function BasicTable() {
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+    <Paper sx={{ width: '100%', overflow: 'scroll' }}>
+    <TableContainer component={Paper} sx={{ maxHeight: 440 }}>
+      <Table stickyHeader sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell>Service ID</TableCell>
@@ -56,5 +64,6 @@ export default function BasicTable() {
         </TableBody>
       </Table>
     </TableContainer>
+    </Paper>
   );
 }

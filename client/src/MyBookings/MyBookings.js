@@ -21,6 +21,7 @@ function MyBookings() {
             </div>
         </div>
         <BasicTable/>
+        
 
     </div>
     </div></>;
