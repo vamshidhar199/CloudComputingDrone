@@ -1,0 +1,41 @@
+.headingDetails{
+    display: flex;
+    
+}
+
+.headingDetails h3{
+    float: left;
+    
+}
+
+.h3Heading{
+    float: left;
+}
+
+.billTable{
+    height:500px;
+    padding: 20px;
+    margin-top: 30px;
+    
+    
+    
+}
+
+.columnBill{
+    display: flex;
+    float: left;
+}
+
+.billtableRow{
+    padding: 10px;
+}
+
+.columnBillsub{
+    color:#414141;
+    font-size: 13px;
+}
+
+.columnBillBold{
+    color:#414141;
+    font-weight: 600;
+}

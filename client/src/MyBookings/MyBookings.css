@@ -36,6 +36,10 @@
     justify-content: flex-end;
 }
 
+.allBookings{
+    float: left;
+}
+
 .searchCol input[type=text]{
     padding-left: 20px;
     height: 30px;

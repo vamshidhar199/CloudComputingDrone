@@ -6,12 +6,14 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
+import './Table.css'
 
 
 function createData(id, plot, type, service, time,status) {
   return { id, plot, type, service, time,status };
 }
+
+
 
 const rows = [
   createData('ID #1001', "West Plot A","Crop","Rental:Data Collection", "09/30/22","Active"),
@@ -29,7 +31,11 @@ const rows = [
   createData('ID #1061', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
 ];
 
-export default function BasicTable() {
+export default function BasicTable(props) {
+  function openBooking(rowId){
+    console.log(rowId)
+    props.detailedBooking(rowId)
+    }
   return (
     <Paper sx={{ width: '100%', overflow: 'scroll' }}>
     <TableContainer component={Paper} sx={{ maxHeight: 440 }}>
@@ -37,11 +43,11 @@ export default function BasicTable() {
         <TableHead>
           <TableRow>
             <TableCell>Service ID</TableCell>
-            <TableCell align="right">Farmland</TableCell>
-            <TableCell align="right">Land Type&nbsp;(g)</TableCell>
-            <TableCell align="right">Service&nbsp;(g)</TableCell>
-            <TableCell align="right">Time&nbsp;(g)</TableCell>
-            <TableCell align="right">Status&nbsp;(g)</TableCell>
+            <TableCell align="left">Farmland</TableCell>
+            <TableCell align="left">Land Type&nbsp;</TableCell>
+            <TableCell align="left">Service&nbsp;</TableCell>
+            <TableCell align="left">Time&nbsp;</TableCell>
+            <TableCell align="left">Status&nbsp;</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -49,15 +55,17 @@ export default function BasicTable() {
             <TableRow
               key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              onClick={()=>{openBooking(row.id)}}
+              className="spanRowId"
             >
               <TableCell component="th" scope="row">
                 {row.id}
               </TableCell>
-              <TableCell align="right">{row.plot}</TableCell>
-              <TableCell align="right">{row.type}</TableCell>
-              <TableCell align="right">{row.service}</TableCell>
-              <TableCell align="right">{row.time}</TableCell>
-              <TableCell align="right">{row.status}</TableCell>
+              <TableCell align="left">{row.plot}</TableCell>
+              <TableCell align="left">{row.type}</TableCell>
+              <TableCell align="left">{row.service}</TableCell>
+              <TableCell align="left">{row.time}</TableCell>
+              <TableCell align="left">{row.status}</TableCell>
 
             </TableRow>
           ))}
