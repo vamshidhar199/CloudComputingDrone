@@ -2,6 +2,8 @@
     margin-top: 10px;
     color:#1A3447 !important;
     overflow-x: scroll;
+    height: 100vh;
+    overflow: scroll;
 
 }
 

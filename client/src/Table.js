@@ -9,32 +9,12 @@ import Paper from '@mui/material/Paper';
 import './Table.css'
 
 
-function createData(id, plot, type, service, time,status) {
-  return { id, plot, type, service, time,status };
-}
 
-
-
-const rows = [
-  createData('ID #1001', "West Plot A","Crop","Rental:Data Collection", "09/30/22","Active"),
-  createData('ID #1011', "North Plot B","Nursery","Rental:Payload", "09/23/22","Complete"),
-  createData('ID #1021', "East Plot A","Crop","Rental:Data Collection", "09/22/22","Complete"),
-  createData('ID #1031', "West Plot A","Crop","Rental:Data Collection", "09/20/22","Complete"),
-  createData('ID #1041', "South Plot D","Crop","Rental:Data Collection", "09/12/22","Complete"),
-  createData('ID #1051', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
-  createData('ID #1061', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
-  createData('ID #1051', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
-  createData('ID #1061', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
-  createData('ID #1051', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
-  createData('ID #1061', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
-  createData('ID #1051', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
-  createData('ID #1061', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
-];
 
 export default function BasicTable(props) {
-  function openBooking(rowId){
-    console.log(rowId)
-    props.detailedBooking(rowId)
+  function openBooking(row){
+    console.log(row.id)
+    props.detailedBooking(row)
     }
   return (
     <Paper sx={{ width: '100%', overflow: 'scroll' }}>
@@ -51,11 +31,11 @@ export default function BasicTable(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {props.rows.map((row) => (
             <TableRow
               key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              onClick={()=>{openBooking(row.id)}}
+              onClick={()=>{openBooking(row)}}
               className="spanRowId"
             >
               <TableCell component="th" scope="row">

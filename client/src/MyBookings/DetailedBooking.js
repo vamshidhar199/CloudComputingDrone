@@ -207,6 +207,10 @@ function DetailedBooking(props) {
 
           
         </div>
+
+        <div className="row buttonRow">
+            <button className="buttonPayment">Make Payment</button>
+        </div>
       </div>
     </>
   );

@@ -4,12 +4,36 @@ import './MyBookings.css';
 import DetailedBooking from './DetailedBooking';
 function MyBookings() {
 
+    function createData(id, plot, type, service, time,status) {
+        return { id, plot, type, service, time,status };
+      }
+      
+      
+      
+      const bookingData = [
+        createData('ID #1001', "West Plot A","Crop","Rental:Data Collection", "09/30/22","Active"),
+        createData('ID #1011', "North Plot B","Nursery","Rental:Payload", "09/23/22","Complete"),
+        createData('ID #1021', "East Plot A","Crop","Rental:Data Collection", "09/22/22","Complete"),
+        createData('ID #1031', "West Plot A","Crop","Rental:Data Collection", "09/20/22","Complete"),
+        createData('ID #1041', "South Plot D","Crop","Rental:Data Collection", "09/12/22","Complete"),
+        createData('ID #1051', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
+        createData('ID #1061', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
+        createData('ID #1051', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
+        createData('ID #1061', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
+        createData('ID #1051', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
+        createData('ID #1061', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
+        createData('ID #1051', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
+        createData('ID #1061', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
+      ];
+
     const [showDetails,setShowDetails]=useState(false);
     const [rowId,setRowId]=useState(null);
+    const [row,setRow]=useState(null);
 
-    const detailedBooking=(rowId)=>{
+    const detailedBooking=(row)=>{
         setShowDetails(true);
-        setRowId(rowId)
+        setRowId(row.id)
+        setRow(row)
     }
     return <><div className='container-fluid bookDrone'>
     <div className='row welcomeHeadingRow'>
@@ -29,8 +53,8 @@ function MyBookings() {
                 </div>
             </div>
         </div>}
-       { !showDetails && <BasicTable detailedBooking={detailedBooking}/>}
-       { showDetails && <DetailedBooking rowId={rowId}/>}
+       { !showDetails && <BasicTable detailedBooking={detailedBooking} rows={bookingData}/>}
+       { showDetails && <DetailedBooking rowId={rowId} row={row}/>}
 
         
 
