@@ -1,6 +1,7 @@
 import { TableRow } from "@mui/material";
 import React, { Component, useState } from "react";
 import './DetailedServiceReport.css'
+import TitlebarImageList from "./TitlebarImageList"
 function DetailedServiceReport(props) {
   return (
     <>
@@ -47,6 +48,11 @@ function DetailedServiceReport(props) {
             </div>
           </div>
           <div className="col-sm">col 3</div>
+        </div>
+        <div className="row imageRow">
+            <div className="col-sm"><TitlebarImageList/></div>
+            <div className="col-sm"><h1>pilot</h1></div>
+        
         </div>
       </div>
     </>
