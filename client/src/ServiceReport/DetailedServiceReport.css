@@ -1,0 +1,35 @@
+.detailedServiceReport{
+
+}
+
+.column1{
+    text-align: left;
+}
+.serviceText{
+    color: #1A3447;
+    font-weight: 100;
+    padding-left: 10px;
+}
+
+.SignatureText{
+    color: #1A3447;
+    font-weight: 100;
+}
+
+.SignatureRow{
+    margin-top: 20px;
+    text-align: left;
+}
+
+.ServiceReportDetailsRow{
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 5px 10px 20px 0 rgb(8 45 61 / 17%);
+}
+.BackButton{
+    display: flex;
+    padding: 10px;
+    border: 1px solid aliceblue;
+    background-color: white;
+}

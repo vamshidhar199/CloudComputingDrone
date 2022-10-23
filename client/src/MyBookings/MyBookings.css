@@ -36,6 +36,7 @@
     padding: 10px;
     display: flex;
     justify-content: flex-end;
+    margin-right: 17px;
 }
 
 .allBookings{

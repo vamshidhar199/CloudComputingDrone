@@ -4,6 +4,7 @@ function DetailedBooking(props) {
   return (
     <>
       <div style={{ backgroundColor: "white" }}>
+        <button onClick={()=>props.closeDetailedBooking()} className="BackButton"> Return Back to Listing</button>
         <div className="row" style={{ backgroundColor: "white" }}>
           <div className="col-sm headingDetails">
             <h3 style={{ float: "left" }}>Service {props.rowId}</h3>
@@ -207,10 +208,16 @@ function DetailedBooking(props) {
 
           
         </div>
+            { props.row.status=="Complete"?
+              <div className="row buttonRow">
+                <button className="buttonPayment">View Service Report</button>
+              </div>
+            :
 
-        <div className="row buttonRow">
-            <button className="buttonPayment">Make Payment</button>
-        </div>
+            <div className="row buttonRow">
+                <button className="buttonPayment">Make Payment</button>
+            </div>
+        }
       </div>
     </>
   );

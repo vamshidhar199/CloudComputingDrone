@@ -35,6 +35,9 @@ function MyBookings() {
         setRowId(row.id)
         setRow(row)
     }
+    const closeDetailedBooking=()=>{
+        setShowDetails(false);
+    }
     return <><div className='container-fluid bookDrone'>
     <div className='row welcomeHeadingRow'>
     {!showDetails && <div className='col-sm-4 welcomeHeading'>
@@ -54,7 +57,7 @@ function MyBookings() {
             </div>
         </div>}
        { !showDetails && <BasicTable detailedBooking={detailedBooking} rows={bookingData}/>}
-       { showDetails && <DetailedBooking rowId={rowId} row={row}/>}
+       { showDetails && <DetailedBooking rowId={rowId} row={row} closeDetailedBooking={closeDetailedBooking}/>}
 
         
 
