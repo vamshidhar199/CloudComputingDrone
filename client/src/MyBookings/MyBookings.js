@@ -11,19 +11,19 @@ function MyBookings() {
       
       
       const bookingData = [
-        createData('ID #1001', "West Plot A","Crop","Rental:Data Collection", "09/30/22","Active"),
-        createData('ID #1011', "North Plot B","Nursery","Rental:Payload", "09/23/22","Complete"),
-        createData('ID #1021', "East Plot A","Crop","Rental:Data Collection", "09/22/22","Complete"),
-        createData('ID #1031', "West Plot A","Crop","Rental:Data Collection", "09/20/22","Complete"),
-        createData('ID #1041', "South Plot D","Crop","Rental:Data Collection", "09/12/22","Complete"),
-        createData('ID #1051', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
-        createData('ID #1061', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
-        createData('ID #1051', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
-        createData('ID #1061', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
-        createData('ID #1051', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
-        createData('ID #1061', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
-        createData('ID #1051', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
-        createData('ID #1061', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
+        createData('#1001', "West Plot A","Crop","Rental:Data Collection", "09/30/22","Active"),
+        createData('#1011', "North Plot B","Nursery","Rental:Payload", "09/23/22","Complete"),
+        createData('#1021', "East Plot A","Crop","Rental:Data Collection", "09/22/22","Complete"),
+        createData('#1031', "West Plot A","Crop","Rental:Data Collection", "09/20/22","Complete"),
+        createData('#1041', "South Plot D","Crop","Rental:Data Collection", "09/12/22","Complete"),
+        createData('#1051', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
+        createData('#1061', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
+        createData('#1051', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
+        createData('#1061', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
+        createData('#1051', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
+        createData('#1061', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
+        createData('#1051', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
+        createData('#1061', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
       ];
 
     const [showDetails,setShowDetails]=useState(false);
