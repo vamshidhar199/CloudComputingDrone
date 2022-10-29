@@ -4,11 +4,11 @@ import Sidebar from '../Sidebar/Sidebar'
 import { Outlet, Link } from "react-router-dom";
 
 import './Layout.css'
-function Layout() {
+function Layout(props) {
     return <>
     <Navbar/>
     <div className='container-fluid layoutContainer'>
-    <Sidebar/>
+    <Sidebar changeLoginStatus={props.changeLoginStatus}/>
 
     <div className='Main'>
 

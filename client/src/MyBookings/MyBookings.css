@@ -8,7 +8,8 @@
 }
 
 .welcomeHeading h3{
-    color:#1A3447 !important
+    color:#1A3447 !important;
+    padding: 10px;
 }
 
 .welcomeHeading{
@@ -19,6 +20,7 @@
 .welcomeHeadingRow{
     margin-left: 10px;
     background-color: white;
+    height: 20%;
 }
 
 .bookDroneTable{

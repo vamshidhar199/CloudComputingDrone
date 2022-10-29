@@ -78,6 +78,17 @@ list-style: none;
     margin-bottom: 20px;
     padding: 20px;
     
+    
+}
+
+.span-li-colored{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color:#1A3447 ;
+    color: white;
+    
 }
 
 .span-li :hover{
