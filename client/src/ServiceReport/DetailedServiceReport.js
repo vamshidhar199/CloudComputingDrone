@@ -6,9 +6,12 @@ function DetailedServiceReport(props) {
   return (
     <>
       <div className="container-fluid detailedServiceReport">
-        <button onClick={()=>props.closeDetailedBooking()} className="BackButton"> Return to service report listing</button>
+        
         <div className="row">
-          <h3>Service Report for : {props.row.id}</h3>
+            <div className="col-sm-2"><button onClick={()=>props.closeDetailedBooking()} className="BackButton"> Back</button></div>
+            <div className="col-sm"> <h2 style={{float:"left"}}>Service Report for : {props.row.id}</h2></div>
+
+
         </div>
         <div className="row ServiceReportDetailsRow">
           <div className="col-sm-6 column1">
@@ -47,13 +50,14 @@ function DetailedServiceReport(props) {
               <h6 className="SignatureText">Not Signed</h6>
             </div>
           </div>
-          <div className="col-sm">col 3</div>
+          <div className="col-sm"></div>
         </div>
         <div className="row imageRow">
             <div className="col-sm"><TitlebarImageList/></div>
             <div className="col-sm"><h1>pilot</h1></div>
         
         </div>
+        
       </div>
     </>
   );
