@@ -14,6 +14,14 @@
 .SignatureText{
     color: #1A3447;
     font-weight: 100;
+    
+}
+.SignatureButton{
+    background-color: #FF6370;
+    border-radius: 5px;
+    color: white;
+
+
 }
 
 .SignatureRow{
@@ -36,4 +44,25 @@
 
 .imageRow{
     margin-top: 20px;
+}
+
+.pilot-div{
+    background-color: white;
+    padding-top: 5%;
+    justify-content: left;
+    text-align: left;
+    padding-left: 4%;
+
+}
+
+.viewMore{
+    width: 40%;
+    background-color: #FF6370;
+    border-radius: 5px;
+    color: white;
+}
+
+.button-div{
+    padding-left: 4%;
+    padding-top: 10%;
 }
