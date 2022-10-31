@@ -52,6 +52,11 @@ function Profile() {
             <Fields rowName={"Password"} rowValue={"**********"}/>
 
           </div>
+          <div className="col-sm">
+            <div className="row farmProfile"><button className="farmProfileButton">Farm Profile</button></div>
+            <div className="row farmProfile"><button className="farmProfileButton">Farm Verification</button></div>
+
+          </div>
         </div>
       </div>
     </>

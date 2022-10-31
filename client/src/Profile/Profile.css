@@ -47,3 +47,17 @@
 .detailsListing{
     padding-top: 30px;
 }
+
+.farmProfile{
+    display: flex;
+    justify-content: center;
+    margin-top: 25%;
+}
+
+.farmProfileButton{
+    padding: 17px;
+    width: 70%;
+    background-color: #1A3447;
+    color: white;
+    border-radius: 5px;
+}

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./DetailedBooking.css";
 import { useNavigate } from "react-router-dom";
+import profileImage from "./../Assets/profile1.png";
+
 function DetailedBooking(props) {
   const navigate = useNavigate();
   return (
@@ -46,7 +48,7 @@ function DetailedBooking(props) {
                 DJ Mini{" "}
               </div>
               <div className="row" style={{ fontWeight: "600", color: "grey" }}>
-                DJ Mini{" "}
+                {props.rowId}
               </div>
               <div className="row" style={{ fontWeight: "600", color: "grey" }}>
                 Location{" "}
@@ -60,23 +62,28 @@ function DetailedBooking(props) {
             </div>
 
             <div className="col-sm-2">
-              <img src={require("./../Assets/drone.svg").default} />
+            <img
+                  src={profileImage}
+                  alt="Logo"
+                  width={"110px"}
+                  height={"120px"}
+                />
             </div>
             <div className="col-sm-4" style={{ float: "left" }}>
               <div className="row" style={{ fontWeight: "600", color: "grey" }}>
-                DJ Mini{" "}
+                Drone Polot{" "}
               </div>
               <div className="row" style={{ fontWeight: "600", color: "grey" }}>
-                DJ Mini{" "}
+                Ron Mayer{" "}
               </div>
               <div className="row" style={{ fontWeight: "600", color: "grey" }}>
-                Location{" "}
+                San Jose{" "}
               </div>
               <div className="row" style={{ fontWeight: "300", color: "grey" }}>
                 360 South Market Street{" "}
               </div>
               <div className="row" style={{ fontWeight: "300", color: "grey" }}>
-                Date{" "}
+                Licence : 128945{" "}
               </div>
             </div>
           </div>

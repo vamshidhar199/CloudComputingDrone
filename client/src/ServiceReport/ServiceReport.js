@@ -8,6 +8,10 @@ function ServiceReport() {
     const [rowId,setRowId]=useState(null);
     const [row,setRow]=useState(null);
 
+    const handleSearch=(e)=>{
+        
+    }
+
     useEffect((props) => {
         const search = window.location.search; // could be '?foo=bar'
         const params = new URLSearchParams(search);
@@ -66,7 +70,7 @@ function ServiceReport() {
                 
                 <div className='col-sm-2 searchCol'>
                 
-                <input type="text" placeholder='Search'></input>
+                <input type="text" placeholder='Search' onChange={(e)=>handleSearch(e)}></input>
                 </div>
             </div>
         </div>}
