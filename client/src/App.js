@@ -14,6 +14,7 @@ import DroneFleet from './Admin/DroneFleetTracking/dronefleetTracking';
 import Simulation from './Simulation/Simulation';
 import {useState} from 'react';
 import Login from './Login/Login'
+import FarmProfile from './Profile/FarmProfile';
 function App() {
   const [login,setLogin]=useState(false);
   const changeLoginStatus=(bool)=>{
@@ -32,6 +33,7 @@ function App() {
           <Route path="bookdrone" element={<BookDrone />} />
           <Route path="maintanance" element={<Maintanance />} />
           <Route path="simulation" element={<Simulation />} />
+          <Route path="farmProfile" element={<FarmProfile/>}/>
         </Route>
         <Route path = "/adminhome" element = {<AdminLayout/>} >
           <Route index element = {<AdminHome/>} />

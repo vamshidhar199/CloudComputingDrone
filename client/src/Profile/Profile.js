@@ -2,6 +2,8 @@ import React, { Component,useEffect } from "react";
 import "./Profile.css";
 import profileImage from "./../Assets/profile1.png";
 import Fields from "./Fields";
+import { Outlet, Link } from "react-router-dom";
+
 function Profile() {
     useEffect((props) => {
         // createData("customer1@gmail.com", "+1 619 234 1235", "San Jose, CA", "Visa ending in 1246", "Not Set ","password") 
@@ -53,7 +55,7 @@ function Profile() {
 
           </div>
           <div className="col-sm">
-            <div className="row farmProfile"><button className="farmProfileButton">Farm Profile</button></div>
+            <div className="row farmProfile"><button className="farmProfileButton"><Link class="nav-link" to="/farmProfile">Farm Profile</Link></button></div>
             <div className="row farmProfile"><button className="farmProfileButton">Farm Verification</button></div>
 
           </div>

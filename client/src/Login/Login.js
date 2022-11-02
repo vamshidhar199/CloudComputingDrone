@@ -3,10 +3,33 @@ import "./Login.css";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { color } from "@mui/system";
+import MenuItem from '@mui/material/MenuItem';
+import SignUp from "./SignUp";
+
 function Login(props) {
+    const roles = [
+        {
+          value: 'Farmer',
+          label: 'Farmer',
+        },
+        {
+          value: 'Pilot',
+          label: 'Pilot',
+        }
+      ];
     const [signup,setSignUp]=useState(false);
+    const [proceedSignUp,setproceedSignUp]=useState(false);
+
+    const sendSignUpToDb=(data)=>{
+        console.log(data);
+    }
+
     const changeSignUp=()=>{
         setSignUp(!signup);
+    }
+
+    const handleSignUp=()=>{
+        setproceedSignUp(true)
     }
 
     const validateLogin=(e)=>{
@@ -18,7 +41,7 @@ function Login(props) {
     }
   return (
     <>
-      <div className="container-fluid login-container">
+     { proceedSignUp ==false ? <div className="container-fluid login-container">
        { signup==false ?
        <div className="row">
           <div className="col-sm-6 image-width">
@@ -79,7 +102,16 @@ function Login(props) {
               <br/>
               <br/>
               <TextField fullWidth label="Password" id="fullWidth" type="password"/>
-              <button className="button-login">Sign Up</button>
+              <br></br>
+              <br></br>
+              <TextField id="role" select label="Select" helperText="Please select your role">
+          {roles.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+              <button className="button-login" onClick={()=>{handleSignUp()}}>Sign Up</button>
             <br/>
             <div class="divider d-flex align-items-center my-4">
             <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
@@ -90,7 +122,9 @@ function Login(props) {
           </div>
         </div>
         }
-      </div>
+      </div>:
+      <SignUp sendSignUpToDb={sendSignUpToDb}/>
+}
     </>
   );
 }

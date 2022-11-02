@@ -1,27 +1,40 @@
-import React, { Component } from "react";
+import React, { Component,useRef } from "react";
 import "./DetailedBooking.css";
 import { useNavigate } from "react-router-dom";
 import profileImage from "./../Assets/profile1.png";
+import { Button } from  '@progress/kendo-react-buttons';
+import { PDFExport, savePDF } from  '@progress/kendo-react-pdf';
 
 function DetailedBooking(props) {
   const navigate = useNavigate();
+  const pdfExportComponent = useRef(null);
   return (
     <>
+    {/* <button onClick={()=>{pdfExportComponent.current.save();}}>save pdf</button> */}
+    <PDFExport  ref={pdfExportComponent}>
       <div style={{ backgroundColor: "white" }}>
-        <button
+       <div style={{display:"flex",justifyContent:"space-between"}}> <button
           onClick={() => props.closeDetailedBooking()}
           className="BackButton"
         >
           {" "}
           Return Back to Listing
         </button>
-        <div className="row" style={{ backgroundColor: "white" }}>
+        <button
+          onClick={()=>{pdfExportComponent.current.save();}}
+          className="BackButton"
+        >
+          {" "}
+          Save as PDF
+        </button>
+        </div>
+        <div className="row" style={{ backgroundColor: "white",marginLeft:"10px",marginRight:"10px" }}>
           <div className="col-sm headingDetails">
             <h3 style={{ float: "left" }}>Service {props.rowId}</h3>
           </div>
         </div>
 
-        <div className="row " style={{ backgroundColor: "white" }}>
+        <div className="row " style={{ backgroundColor: "white",marginLeft:"10px",marginRight:"10px" }}>
           <p
             style={{
               float: "left",
@@ -34,7 +47,7 @@ function DetailedBooking(props) {
           </p>
         </div>
 
-        <div className="row " style={{ backgroundColor: "white" }}>
+        <div className="row " style={{ backgroundColor: "white",marginLeft:"10px",marginRight:"10px" }}>
           <p style={{ float: "left", display: "flex", padding: "10px" }}>
             Summary
           </p>
@@ -249,6 +262,7 @@ function DetailedBooking(props) {
           </div>
         )}
       </div>
+      </PDFExport>
     </>
   );
 }
