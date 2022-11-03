@@ -9,10 +9,7 @@ function AdminLayout () {
         <AdminNavbar/>
         <div className='container-fluid layoutContainer'>
             <AdminSidebar/>
-            <div className='Main'>
-                <Adminoptions/>
-                <Outlet/>
-            </div>
+            <Outlet/>
         </div>
     </>  
 }

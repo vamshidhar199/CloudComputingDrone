@@ -8,9 +8,9 @@ function Adminoptions (){
     return <>
     <Box>
         <Grid container>
-            <Grid item xs={5}><h2>Drone Map</h2></Grid>
-            <Grid item xs={2}></Grid>
-            <Grid item xs={5}><h2>Welcome Admin</h2></Grid>
+            <Grid item xs={2}><h2>Drone Map</h2></Grid>
+            <Grid item xs={7}></Grid>
+            <Grid item xs={3}><h2>Welcome Admin</h2></Grid>
             <Grid item xs ={12}>
                 <Stack spacing={1} direction="row">
                     <Button variant="contained">Fleet  Statistics</Button>

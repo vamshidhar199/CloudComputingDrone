@@ -19,6 +19,8 @@ import Pilot from './Pilot/Pilot'
 import { useNavigate } from "react-router-dom";
 import Schedule from './Pilot/Schedule';
 
+import AdmindroneManagement from './Admin/AdminDroneManagement/Admindronemanagement';
+import AdminaddDrone from './Admin/AdminAddDrone/Adminadddrone';
 function App() {
   const navigate = useNavigate();
   const [role,setRole]=useState();
@@ -55,12 +57,13 @@ function App() {
         <Route path = "/adminhome" element = {<AdminLayout/>} >
           <Route index element = {<AdminHome/>} />
           <Route path = "dronecatalog"  />
-          <Route path = "dronemngt" />
+          <Route path = "dronemngt" element={<AdmindroneManagement/>}/>
           <Route path = "dronebook" />
           <Route path = "dronefleet" element = {<DroneFleet/>} />
           <Route path = "droneservice" />
           <Route path = "dronedata" />
           <Route path = "droneAI" />
+          <Route path = "adminadddrone" element={<AdminaddDrone/>}/>
         </Route>
       </Routes>
     
