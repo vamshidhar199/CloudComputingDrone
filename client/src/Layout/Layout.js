@@ -6,11 +6,11 @@ import { Outlet, Link } from "react-router-dom";
 import './Layout.css'
 function Layout(props) {
     return <>
-    <Navbar/>
+    <Navbar role={props.role}  changeLoginStatus={props.changeLoginStatus}/>
     <div className='container-fluid layoutContainer'>
-    <Sidebar changeLoginStatus={props.changeLoginStatus}/>
+    {props.role!="pilot" && <Sidebar role={props.role} changeLoginStatus={props.changeLoginStatus}/>}
 
-    <div className='Main'>
+    <div className={props.role=="pilot"?'Main-Pilot':'Main'}>
 
     <Outlet />
     </div>

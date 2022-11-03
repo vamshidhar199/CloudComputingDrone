@@ -15,17 +15,31 @@ import Simulation from './Simulation/Simulation';
 import {useState} from 'react';
 import Login from './Login/Login'
 import FarmProfile from './Profile/FarmProfile';
+import Pilot from './Pilot/Pilot'
+import { useNavigate } from "react-router-dom";
+import Schedule from './Pilot/Schedule';
+
 function App() {
+  const navigate = useNavigate();
+  const [role,setRole]=useState();
   const [login,setLogin]=useState(false);
-  const changeLoginStatus=(bool)=>{
+  const changeLoginStatus=(bool,role)=>{
     setLogin(bool)
+    //need to be changed based on the provided parameter
+    if(role=="pilot"){
+    setRole("pilot")
+    navigate("/pilot");}
+    else{
+      navigate("/")
+    }
+
   }
   return (
     <div className="App">
       {login==false ? <Login changeLoginStatus={changeLoginStatus}/>:
-      <BrowserRouter>
+      
       <Routes>
-        <Route path="/" element={<Layout changeLoginStatus={changeLoginStatus}/>}>
+        <Route path="/" element={<Layout role={role} changeLoginStatus={changeLoginStatus}/>}>
           <Route index element={<Home />} />
           <Route path="mybookings" element={<MyBookings />} />
           <Route path="service" element={<ServiceReport/>} />
@@ -34,6 +48,9 @@ function App() {
           <Route path="maintanance" element={<Maintanance />} />
           <Route path="simulation" element={<Simulation />} />
           <Route path="farmProfile" element={<FarmProfile/>}/>
+          <Route path="pilot" element={<Pilot/>}/>
+          <Route path="Schedule" element={<Schedule/>}/>
+          
         </Route>
         <Route path = "/adminhome" element = {<AdminLayout/>} >
           <Route index element = {<AdminHome/>} />
@@ -46,7 +63,7 @@ function App() {
           <Route path = "droneAI" />
         </Route>
       </Routes>
-    </BrowserRouter>
+    
     }
     </div>
   );

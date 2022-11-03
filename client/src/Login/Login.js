@@ -6,7 +6,9 @@ import { color } from "@mui/system";
 import MenuItem from '@mui/material/MenuItem';
 import SignUp from "./SignUp";
 
+
 function Login(props) {
+
     const roles = [
         {
           value: 'Farmer',
@@ -35,9 +37,18 @@ function Login(props) {
     const validateLogin=(e)=>{
         const email=document.getElementById('Email').value
         const password=document.getElementById('Password').value
+        let role=null
+        if(email=="pilot")
+            role="pilot"
+        else
+            role="farmer"
+        // if(role=="pilot"){
+
+        // }
 
         console.log(email + " " + password);
-        props.changeLoginStatus(true)
+        props.changeLoginStatus(true,role)
+
     }
   return (
     <>
