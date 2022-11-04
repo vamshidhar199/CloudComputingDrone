@@ -9,10 +9,7 @@ function AdminLayout (props) {
         <AdminNavbar role={props.role} changeLoginStatus={props.changeLoginStatus}/>
         <div className='container-fluid layoutContainer'>
             <AdminSidebar/>
-            <div className='Main'>
-                <Adminoptions/>
-                <Outlet/>
-            </div>
+            <Outlet/>
         </div>
     </>  
 }
