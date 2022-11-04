@@ -19,7 +19,7 @@ import FarmProfile from './Profile/FarmProfile';
 import Pilot from './Pilot/Pilot'
 import { useNavigate } from "react-router-dom";
 import Schedule from './Pilot/Schedule';
-
+import AdmineditDrone from './Admin/AdminEditDrone/Admineditdrone';
 import AdmindroneManagement from './Admin/AdminDroneManagement/Admindronemanagement';
 import AdminaddDrone from './Admin/AdminAddDrone/Adminadddrone';
 function App() {
@@ -102,7 +102,7 @@ function App() {
   }
   return (
     <div className="App">
-      {login==false ? <Login changeLoginStatus={changeLoginStatus}/>:
+      {/* {login==false ? <Login changeLoginStatus={changeLoginStatus}/>: */}
       
       <Routes>
         <Route path="/" element={<Layout role={role} changeLoginStatus={changeLoginStatus}/>}>
@@ -128,10 +128,11 @@ function App() {
           <Route path = "dronedata" />
           <Route path = "droneAI" />
           <Route path = "adminadddrone" element={<AdminaddDrone/>}/>
+          <Route path = "admineditdrone" element={<AdmineditDrone/>}/>
         </Route>
       </Routes>
     
-    }
+    {/* } */}
     </div>
   );
 }

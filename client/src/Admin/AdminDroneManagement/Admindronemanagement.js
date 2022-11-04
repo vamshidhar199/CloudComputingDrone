@@ -8,7 +8,7 @@ function AdminDroneManagement () {
     const rows = [['ID# 1', 'DJI Mini SE', 'Data Collection', 'Deployed'],
         ['ID# 2', 'DJI Mini SE', 'Data Collection', 'Available'],
         ['ID# 3', 'DJI Mini SE', 'Data Collection', 'Booked'],
-        ['ID# 1', 'DJI Phantom Pro', 'Serveillance', 'Deployed']];
+        ['ID# 4', 'DJI Phantom Pro', 'Serveillance', 'Deployed']];
 
 
     return <>
@@ -37,8 +37,8 @@ function AdminDroneManagement () {
                             <TableCell>{row[1]}</TableCell>
                             <TableCell>{row[2]}</TableCell>
                             <TableCell>{row[3]}</TableCell>
-                            <TableCell><Button>Edit</Button></TableCell>
-                            <TableCell><Button>Edit</Button></TableCell>
+                            <TableCell><Button href="/adminhome/admineditdrone">Edit</Button></TableCell>
+                            <TableCell><Button href="/adminhome/admineditdrone">Edit</Button></TableCell>
                         </TableRow>
                         ))}
                 </TableBody>
