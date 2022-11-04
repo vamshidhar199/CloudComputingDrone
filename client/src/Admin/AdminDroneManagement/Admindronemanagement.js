@@ -1,7 +1,9 @@
 import React from "react";
 import {TableBody, TableContainer, TableHead, Table, TableRow,TableCell, Box, Typography, Paper, Button} from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 function AdminDroneManagement () {
+    const navigate = useNavigate();
 
     const rows = [['ID# 1', 'DJI Mini SE', 'Data Collection', 'Deployed'],
         ['ID# 2', 'DJI Mini SE', 'Data Collection', 'Available'],
@@ -14,7 +16,8 @@ function AdminDroneManagement () {
         <Typography sx={{textAlign:'left'}} variant="h4">Drone Management</Typography>
         <Button sx={{marginRight:'86%', marginTop:'2%'}} variant="contained" >Drone List</Button>
         <Typography sx={{marginRight:'48%', marginTop:'5%'}} variant="h4" >Add, Edit and Update Drone</Typography>
-        <Button sx={{marginLeft:'80%', marginTop:'5%'}}  variant="contained" href="/adminhome/Adminadddrone">Add Drone</Button>
+        {/* Do not use href for navigation inside react application it causes refresh of the entire application */}
+        <Button sx={{marginLeft:'80%', marginTop:'5%'}}  variant="contained" onClick={()=>{ navigate("/adminhome/Adminadddrone")}}>Add Drone</Button>
         <TableContainer sx={{marginTop:"4%"}} component={Paper} >
             <Table aria-label="simple table">
                 <TableHead>
