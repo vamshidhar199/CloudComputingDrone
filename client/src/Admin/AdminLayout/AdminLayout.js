@@ -4,9 +4,9 @@ import AdminNavbar from '../AdminNavbar/AdminNavbar';
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
 import Adminoptions from '../AdminOptions /adminoptions';
 
-function AdminLayout () {
+function AdminLayout (props) {
     return <>
-        <AdminNavbar/>
+        <AdminNavbar role={props.role} changeLoginStatus={props.changeLoginStatus}/>
         <div className='container-fluid layoutContainer'>
             <AdminSidebar/>
             <div className='Main'>

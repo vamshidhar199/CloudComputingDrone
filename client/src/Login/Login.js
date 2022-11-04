@@ -40,8 +40,10 @@ function Login(props) {
         let role=null
         if(email=="pilot")
             role="pilot"
-        else
+        else if(email=="farmer")
             role="farmer"
+        else if(email=="admin")
+            role="admin"
         // if(role=="pilot"){
 
         // }

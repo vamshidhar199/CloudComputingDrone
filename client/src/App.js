@@ -2,6 +2,7 @@
 import Layout from './Layout/Layout'
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Maintanance from "./Maintanance/Maintanance";
 import BookDrone from "./BookDrone/BookDrone";
 import Profile from "./Profile/Profile";
@@ -12,7 +13,7 @@ import AdminLayout from './Admin/AdminLayout/AdminLayout';
 import AdminHome from './Admin/AdminHome/Adminhome';
 import DroneFleet from './Admin/DroneFleetTracking/dronefleetTracking';
 import Simulation from './Simulation/Simulation';
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import Login from './Login/Login'
 import FarmProfile from './Profile/FarmProfile';
 import Pilot from './Pilot/Pilot'
@@ -23,14 +24,77 @@ function App() {
   const navigate = useNavigate();
   const [role,setRole]=useState();
   const [login,setLogin]=useState(false);
+  var loginDetails = {};
+  var loginjson = [];
+  loginDetails.loginjson = loginjson;
+
+  useEffect(() => {
+    const auth = JSON.parse(localStorage.getItem("auth"));
+    console.log(auth);
+    if (auth && auth.loginjson[0].isLogged) {
+      setRole(auth.loginjson[0].userRole)
+      navigateToRole(auth.loginjson[0].userRole);
+    }
+  }, []);
+
+  const navigateToRole=(role)=>{
+    if(role=="pilot"){
+      setLogin(true)
+      setRole("pilot")
+      navigate("/pilot");
+    }
+    else if( role=="farmer"){
+      setLogin(true)
+      setRole("farmer")
+      navigate("/");
+    }
+    else if( role=="admin"){
+      setLogin(true)
+      setRole("admin")
+      navigate("/adminhome");
+    }
+  }
+
   const changeLoginStatus=(bool,role)=>{
     setLogin(bool)
     //need to be changed based on the provided parameter
-    if(role=="pilot"){
-    setRole("pilot")
-    navigate("/pilot");}
-    else{
+    if(bool && role=="pilot")
+    {
+      var loginjson = {
+        userName: "",
+        userRole: role,
+        isLogged: true,
+      };
+      loginDetails.loginjson.push(loginjson);
+      localStorage.setItem("auth", JSON.stringify(loginDetails));
+      setRole("pilot")
+      navigate("/pilot");
+    }
+    else if(bool && role=="farmer"){
+      var loginjson = {
+        userName: "",
+        userRole: role,
+        isLogged: true,
+      };
+      loginDetails.loginjson.push(loginjson);
+      localStorage.setItem("auth", JSON.stringify(loginDetails));
+      setRole("farmer")
       navigate("/")
+    }
+    else if(bool && role=="admin"){
+      var loginjson = {
+        userName: "",
+        userRole: role,
+        isLogged: true,
+      };
+      loginDetails.loginjson.push(loginjson);
+      localStorage.setItem("auth", JSON.stringify(loginDetails));
+      setRole("admin")
+      navigate("/adminhome")
+    }
+    if(!bool){
+      setRole(null)
+      localStorage.removeItem("auth");
     }
 
   }
@@ -52,7 +116,7 @@ function App() {
           <Route path="Schedule" element={<Schedule/>}/>
           
         </Route>
-        <Route path = "/adminhome" element = {<AdminLayout/>} >
+        <Route path = "/adminhome" element = {<AdminLayout role={role} changeLoginStatus={changeLoginStatus}/>} >
           <Route index element = {<AdminHome/>} />
           <Route path = "dronecatalog"  />
           <Route path = "dronemngt" />
