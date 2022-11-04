@@ -3,11 +3,15 @@ import { Button, Grow, Typography,Box,Grid, Card, CardActionArea, CardContent, C
 import { Stack } from '@mui/system';
 import img from '../../Assets/drone.png';
 import Adminoptions from '../AdminOptions /adminoptions';
+import { ClassNames } from '@emotion/react';
 // #import GoogleMapReact from 'google-map-react';
 
 function DroneFleet (){
-    return <>
+    return <div className='container-fluid drone'>
+    <div className='row'>
     <Adminoptions/>
+    </div>
+    <div className='row'>
     <Stack direction="row" spacing={2}>
         <Card sx={{maxWidth:"10%"}}>
             <CardActionArea>
@@ -55,7 +59,8 @@ function DroneFleet (){
             </CardActionArea>
         </Card>
     </Stack>
-    </>
+    </div>
+    </div>
 }
 
 export default DroneFleet;
