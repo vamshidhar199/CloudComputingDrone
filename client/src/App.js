@@ -22,6 +22,8 @@ import Schedule from './Pilot/Schedule';
 import AdmineditDrone from './Admin/AdminEditDrone/Admineditdrone';
 import AdmindroneManagement from './Admin/AdminDroneManagement/Admindronemanagement';
 import AdminaddDrone from './Admin/AdminAddDrone/Adminadddrone';
+import AdminDroneCatalog from './Admin/AdminDroneCatalog/AdminDroneCatalog';
+
 function App() {
   const navigate = useNavigate();
   const [role,setRole]=useState();
@@ -120,7 +122,7 @@ function App() {
         </Route>
         <Route path = "/adminhome" element = {<AdminLayout role={role} changeLoginStatus={changeLoginStatus}/>} >
           <Route index element = {<AdminHome/>} />
-          <Route path = "dronecatalog"  />
+          <Route path = "dronecatalog"  element={<AdminDroneCatalog/>}/>
           <Route path = "dronemngt" element={<AdmindroneManagement/>}/>
           <Route path = "dronebook" />
           <Route path = "dronefleet" element = {<DroneFleet/>} />

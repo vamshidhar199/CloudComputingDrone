@@ -37,8 +37,8 @@ function AdminDroneManagement () {
                             <TableCell>{row[1]}</TableCell>
                             <TableCell>{row[2]}</TableCell>
                             <TableCell>{row[3]}</TableCell>
-                            <TableCell><Button href="/adminhome/admineditdrone">Edit</Button></TableCell>
-                            <TableCell><Button href="/adminhome/admineditdrone">Edit</Button></TableCell>
+                            <TableCell><Button onClick={()=>{ navigate("/adminhome/admineditdrone")}}>Edit</Button></TableCell>
+                            <TableCell><Button onClick={()=>{ navigate("/adminhome/admineditdrone")}}>Edit</Button></TableCell>
                         </TableRow>
                         ))}
                 </TableBody>
