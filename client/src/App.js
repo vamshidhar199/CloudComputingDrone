@@ -22,6 +22,8 @@ import Schedule from './Pilot/Schedule';
 import AdmineditDrone from './Admin/AdminEditDrone/Admineditdrone';
 import AdmindroneManagement from './Admin/AdminDroneManagement/Admindronemanagement';
 import AdminaddDrone from './Admin/AdminAddDrone/Adminadddrone';
+import PilotBooking from './Pilot/PilotBookings';
+import StartService from './Pilot/StartService/StartService'
 function App() {
   const navigate = useNavigate();
   const [role,setRole]=useState();
@@ -116,6 +118,10 @@ function App() {
           <Route path="farmProfile" element={<FarmProfile/>}/>
           <Route path="pilot" element={<Pilot/>}/>
           <Route path="Schedule" element={<Schedule/>}/>
+          <Route path="PilotBooking" element={<PilotBooking/>}/>
+          <Route path="StartService" element={<StartService/>}/>
+
+          
           
         </Route>
         <Route path = "/adminhome" element = {<AdminLayout role={role} changeLoginStatus={changeLoginStatus}/>} >

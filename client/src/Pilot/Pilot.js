@@ -4,11 +4,11 @@ import Chart from "./Chart.js";
 import Chips from "./Chips";
 import './Pilot.css'
 import { useNavigate } from "react-router-dom";
-
+import PilotBooking from './PilotBookings';
 function Pilot() {
   const navigate = useNavigate();
 
-    return <div style={{marginLeft:"50px"}}>
+    return <div >
      <div className="row home " style={{ marginLeft: "10px" }}>
         <Cards />
       </div>
@@ -30,7 +30,7 @@ function Pilot() {
           <div className="row chips-row">
      
             <div className='col-sm'><button className='button' onClick={()=>{ navigate("/Schedule")}}>Edit Schedule</button></div>
-            <div className='col-sm'><button className='button' >View Bookings</button></div>
+            <div className='col-sm'><button className='button' onClick={()=>{ navigate("/PilotBooking")}} >View Bookings</button></div>
             <div className='col-sm'><button className='button' >Edit Profile</button></div>
             
           </div>
