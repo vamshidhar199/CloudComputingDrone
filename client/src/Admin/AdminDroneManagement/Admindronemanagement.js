@@ -10,6 +10,11 @@ function AdminDroneManagement () {
         ['ID# 3', 'DJI Mini SE', 'Data Collection', 'Booked'],
         ['ID# 4', 'DJI Phantom Pro', 'Serveillance', 'Deployed']];
 
+    const passEditParam = (row) => {
+        console.log('passEditParam',row);
+        navigate("/adminhome/admineditdrone", {state:{id: row[0], model: row[1],service: row[2],brand: row[3] }});
+
+    };
 
     return <>
     <Box mt={15} ml={5}>
@@ -37,8 +42,8 @@ function AdminDroneManagement () {
                             <TableCell>{row[1]}</TableCell>
                             <TableCell>{row[2]}</TableCell>
                             <TableCell>{row[3]}</TableCell>
-                            <TableCell><Button onClick={()=>{ navigate("/adminhome/admineditdrone")}}>Edit</Button></TableCell>
-                            <TableCell><Button onClick={()=>{ navigate("/adminhome/admineditdrone")}}>Edit</Button></TableCell>
+                            <TableCell><Button sx={{backgroundColor: "#e05c53", '&:hover': {backgroundColor: '#e05c53'}}} variant="contained" onClick={()=>passEditParam(row)}>Edit</Button></TableCell>
+                            <TableCell><Button sx={{backgroundColor: "#e05c53", '&:hover': {backgroundColor: '#e05c53'}}} variant="contained" onClick={()=>passEditParam(row)}>Edit</Button></TableCell>
                         </TableRow>
                         ))}
                 </TableBody>
