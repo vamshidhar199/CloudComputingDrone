@@ -1,16 +1,18 @@
-import React, { Component, useRef } from "react";
+import React, { Component, useRef ,useState} from "react";
 import "./DetailedBooking.css";
 import { useNavigate } from "react-router-dom";
 import profileImage from "./../Assets/profile1.png";
 import { Button } from "@progress/kendo-react-buttons";
 import { PDFExport, savePDF } from "@progress/kendo-react-pdf";
 import axios from "axios";
+import StartService from "./StartService/StartService";
 
 
 function DetailedBooking(props) {
   const navigate = useNavigate();
   const pdfExportComponent = useRef(null);
-  const test = () => {
+  const [startService,setStartService]=useState(false)
+  const startServiceCall = (bool) => {
   //   window.open('http://3.90.218.152/flightmonitor/','_blank')
   //   axios.get("http://3.90.218.152/flight_data_collect/connect/14551/").then((res) => {
   //     console.log(res);
@@ -27,7 +29,7 @@ function DetailedBooking(props) {
   //     });
       
   //  },6000);
-
+  
   navigate('/StartService')
    
 
@@ -152,20 +154,25 @@ function DetailedBooking(props) {
           <div className="row billTable">
             <div className="col-sm-4">
               <div className="row buttonRow">
-                <button className="buttonPayment" onClick={() => test()}  >
+                <button className="buttonPayment" onClick={() => startServiceCall(true)}  >
                   Start service
                 </button>
               </div>
               <div className="row buttonRow">
-                <button className="buttonPayment" onClick={() => test()}>
+                <button className="buttonPayment" >
                   Mark as completed
                 </button>
               </div>
               <div className="row buttonRow">
-                <button className="buttonPayment" onClick={() => test()}>
+                <button className="buttonPayment" >
                   Back to dashboard
                 </button>
               </div>
+              {startService==true?<div className="row buttonRow">
+                <button className="buttonPayment" >
+                  Close mission planner
+                </button>
+              </div>:""}
             </div>
             <div className="col-sm-8">
             <div className="row billtableRow">
@@ -196,6 +203,7 @@ function DetailedBooking(props) {
             </div>
             
             </div>
+            
           </div>
         </div>
 
