@@ -2,7 +2,10 @@ import React, { Component,useState } from 'react';
 import BasicTable from '../Table'
 import './PilotBookings.css';
 import DetailedBooking from './DetailedBooking';
+import { useNavigate } from "react-router-dom";
+
 function PilotBookings() {
+  const navigate = useNavigate();
 
     function createData(id, plot, type, service, time,status) {
         return { id, plot, type, service, time,status };
@@ -56,6 +59,7 @@ function PilotBookings() {
         
 
     </div>
+    <div className='row'><button onClick={()=>navigate('/Pilot')} className="buttonPayment" style={{marginLeft:"20px",marginTop:"10px"}}>Back to dashboard</button></div>
     </div></>;
 }
 

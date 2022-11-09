@@ -29,8 +29,9 @@ function DetailedBooking(props) {
   //     });
       
   //  },6000);
-  
-  navigate('/StartService')
+  var nav='/StartService?id='+props.rowId
+  nav=nav.replace('#','')
+  navigate(nav)
    
 
 }
@@ -164,7 +165,7 @@ function DetailedBooking(props) {
                 </button>
               </div>
               <div className="row buttonRow">
-                <button className="buttonPayment" >
+                <button className="buttonPayment" onClick={()=>navigate('/Pilot')} >
                   Back to dashboard
                 </button>
               </div>
@@ -184,22 +185,22 @@ function DetailedBooking(props) {
               <div className="col-sm columnBill columnBillsub">
                 Service Id
               </div>
-              <div className="col-sm-2 columnBillsub">20</div>
-              <img src={require("./../Assets/Line.svg").default}  style={{paddingTop:"5px"}}/>
+              <div className="col-sm-2 columnBillsub">{props.rowId}</div>
+              {/* <img src={require("./../Assets/Line.svg").default}  style={{paddingTop:"5px"}}/> */}
             </div>
             <div className="row billtableRow">
               <div className="col-sm columnBill columnBillsub">
                 Duration
               </div>
-              <div className="col-sm-2 columnBillsub">20</div>
-              <img src={require("./../Assets/Line.svg").default} />
+              <div className="col-sm-2 columnBillsub">2 Hrs</div>
+              {/* <img src={require("./../Assets/Line.svg").default} /> */}
             </div>
             <div className="row billtableRow">
               <div className="col-sm columnBill columnBillsub">
                 Location
               </div>
-              <div className="col-sm-2 columnBillsub">20</div>
-              <img src={require("./../Assets/Line.svg").default} />
+              <div className="col-sm-2 columnBillsub">367 Old Toll Road, Mariposa, CA</div>
+              {/* <img src={require("./../Assets/Line.svg").default} /> */}
             </div>
             
             </div>
