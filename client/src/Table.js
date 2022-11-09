@@ -31,7 +31,16 @@ export default function BasicTable(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.rows.map((row) => (
+          {props.rows.filter((row)=>{
+            if(props.search==null)
+                return row;
+            else if(props.search!=null && (row.plot.toLowerCase().includes(props.search.toLowerCase()) || row.type.toLowerCase().includes(props.search.toLowerCase()))){
+              return row
+            }
+            else{
+
+            }
+          }).map((row) => (
             <TableRow
               key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

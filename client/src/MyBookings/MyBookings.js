@@ -18,18 +18,21 @@ function MyBookings() {
         createData('#1041', "South Plot D","Crop","Rental:Data Collection", "09/12/22","Complete"),
         createData('#1051', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
         createData('#1061', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
-        createData('#1051', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
-        createData('#1061', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
-        createData('#1051', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
-        createData('#1061', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
-        createData('#1051', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
-        createData('#1061', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
+        createData('#1071', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
+        createData('#1081', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
+        createData('#1091', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
+        createData('#1101', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
+        createData('#1111', "East Plot B","Crop","Rental:Data Collection", "09/11/22","Complete"),
+        createData('#1161', "West Plot A","Crop","Rental:Data Collection", "09/10/22","Complete"),
       ];
 
     const [showDetails,setShowDetails]=useState(false);
     const [rowId,setRowId]=useState(null);
     const [row,setRow]=useState(null);
-
+    const [search,setSearch]=useState(null)
+    const handleSearch=(e)=>{
+            setSearch(e.target.value)
+    }
     const detailedBooking=(row)=>{
         setShowDetails(true);
         setRowId(row.id)
@@ -52,11 +55,11 @@ function MyBookings() {
                 
                 <div className='col-sm-2 searchCol'>
                 
-                <input type="text" placeholder='Search'></input>
+                <input type="text" placeholder='Search' onChange={(e)=>handleSearch(e)}></input>
                 </div>
             </div>
         </div>}
-       { !showDetails && <BasicTable detailedBooking={detailedBooking} rows={bookingData}/>}
+       { !showDetails && <BasicTable detailedBooking={detailedBooking} rows={bookingData} search={search}/>}
        { showDetails && <DetailedBooking rowId={rowId} row={row} closeDetailedBooking={closeDetailedBooking}/>}
 
         
