@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 
 import StepHeaderInformation from '../Components/StepHeaderInformation/StepHeaderInformation';
 import StepCoreContent from '../Components/StepCoreContent/stepCoreContent';
-
+import './BookDrone.css'
 const steps = ['a', 'b', 'c', 'd', 'e'];
 
 export default function HorizontalLinearStepper() {

@@ -66,7 +66,7 @@ function DetailedBooking(props) {
           </p>
           <div className="row">
             <div className="col-sm-2">
-              <img src={require("./../Assets/drone.svg").default} />
+              {/* <img src={require("./../Assets/drone.svg").default} /> */}
             </div>
 
             <div className="col-sm-4" style={{ float: "left" }}>
@@ -88,12 +88,12 @@ function DetailedBooking(props) {
             </div>
 
             <div className="col-sm-2">
-            <img
+            {/* <img
                   src={profileImage}
                   alt="Logo"
                   width={"110px"}
                   height={"120px"}
-                />
+                /> */}
             </div>
             <div className="col-sm-4" style={{ float: "left" }}>
               <div className="row" style={{ fontWeight: "600", color: "grey" }}>
@@ -129,7 +129,7 @@ function DetailedBooking(props) {
                 Drone Base Cost
               </div>
               <div className="col-sm-2 columnBillsub">20</div>
-              <img src={require("./../Assets/Line.svg").default} />
+              {/* <img src={require("./../Assets/Line.svg").default} /> */}
             </div>
             {/* Drone based cost */}
 
@@ -144,7 +144,7 @@ function DetailedBooking(props) {
                 1x 10:00 AM - 5:00 PM PST Flight: Full Day
               </div>
               <div className="col-sm-2 columnBillsub">20</div>
-              <img src={require("./../Assets/Line.svg").default} />
+              {/* <img src={require("./../Assets/Line.svg").default} /> */}
             </div>
             {/* Flights per day */}
 
@@ -160,7 +160,7 @@ function DetailedBooking(props) {
                 1x Data Collection - Crop Health
               </div>
               <div className="col-sm-2 columnBillsub">20</div>
-              <img src={require("./../Assets/Line.svg").default} />
+              {/* <img src={require("./../Assets/Line.svg").default} /> */}
             </div>
 
             {/* Hourly Service Operations Per Day */}
@@ -177,7 +177,7 @@ function DetailedBooking(props) {
                 1 Day - On-Demand
               </div>
               <div className="col-sm-2 columnBillsub">20</div>
-              <img src={require("./../Assets/Line.svg").default} />
+              {/* <img src={require("./../Assets/Line.svg").default} /> */}
             </div>
 
             {/* Service Duration */}
@@ -199,7 +199,7 @@ function DetailedBooking(props) {
             <div className="row billtableRow">
               <div className="col-sm columnBill columnBillsub">Price</div>
               <div className="col-sm-2 columnBillsub">20</div>
-              <img src={require("./../Assets/Line.svg").default} />
+              {/* <img src={require("./../Assets/Line.svg").default} /> */}
             </div>
 
             {/* total*/}
@@ -217,7 +217,7 @@ function DetailedBooking(props) {
             <div className="row billtableRow">
               <div className="col-sm columnBill columnBillsub">(None)</div>
               <div className="col-sm-2 columnBillsub">20</div>
-              <img src={require("./../Assets/Line.svg").default} />
+              {/* <img src={require("./../Assets/Line.svg").default} /> */}
             </div>
 
             {/* Materials */}
@@ -231,7 +231,7 @@ function DetailedBooking(props) {
             <div className="row billtableRow">
               <div className="col-sm columnBill columnBillsub">1x Camera </div>
               <div className="col-sm-2 columnBillsub">20</div>
-              <img src={require("./../Assets/Line.svg").default} />
+              {/* <img src={require("./../Assets/Line.svg").default} /> */}
             </div>
 
             {/* Equipment */}
@@ -249,7 +249,7 @@ function DetailedBooking(props) {
                 Drone setup and labor
               </div>
               <div className="col-sm-2 columnBillsub">20</div>
-              <img src={require("./../Assets/Line.svg").default} />
+              {/* <img src={require("./../Assets/Line.svg").default} /> */}
             </div>
 
             {/* Pilot Charge */}
