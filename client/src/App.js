@@ -19,11 +19,11 @@ import FarmProfile from './Profile/FarmProfile';
 import Pilot from './Pilot/Pilot'
 import { useNavigate } from "react-router-dom";
 import Schedule from './Pilot/Schedule';
-import AdmineditDrone from './Admin/AdminEditDrone/Admineditdrone';
+import AdmineditDrone from './Admin/AdminDroneManagement/Admineditdrone';
 import AdmindroneManagement from './Admin/AdminDroneManagement/Admindronemanagement';
-import AdminaddDrone from './Admin/AdminAddDrone/Adminadddrone';
 import PilotBooking from './Pilot/PilotBookings';
 import StartService from './Pilot/StartService/StartService'
+import AdminaddDrone from './Admin/AdminDroneManagement/Adminadddrone';
 import AdminDroneCatalog from './Admin/AdminDroneCatalog/AdminDroneCatalog';
 
 function App() {
