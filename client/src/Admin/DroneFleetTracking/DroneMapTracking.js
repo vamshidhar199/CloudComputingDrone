@@ -1,6 +1,7 @@
 import { Typography, Box, Button } from "@mui/material";
 import React, { useState } from "react";
 import img from '../../Assets/drone.png'
+import { Map, Marker } from 'pigeon-maps'
 
 function DroneFleetData() {
 
@@ -22,6 +23,8 @@ function DroneFleetData() {
             return 'yellow'
         }
     }
+
+    const center = [37.3387, -121.8853]
 
     return <>
     <Box display='flex' flexDirection='column'>

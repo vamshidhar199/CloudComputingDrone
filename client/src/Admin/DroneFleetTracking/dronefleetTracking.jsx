@@ -7,7 +7,7 @@ import { ClassNames } from '@emotion/react';
 import { useState } from 'react';
 import DroneFleetStatistics from './DroneFleetStatistics';
 import DroneARVR  from './DroneARVR'
-import { Map, Marker } from 'pigeon-maps'
+
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
@@ -15,7 +15,7 @@ function DroneFleet (){
 
     const [option, setOption] = useState('');
 
-    const center = [37.3387, -121.8853]
+    
 
     return <>
         <Box width='100%' sx={{marginTop:'6%', backgroundColor:'white'}}>
@@ -41,11 +41,6 @@ function DroneFleet (){
                     {option === 'FleetStatistics' &&   <DroneFleetStatistics/> }
                     {option === 'AR/VR' &&   <DroneARVR/> }
                 </Box>
-            </Box>
-            <Box width='80%' height='50%' marginTop='5%' marginLeft='2%'>
-                <Map center={center} zoom={13} maxZoom={18} minZoom={12}>
-                    <Marker anchor={[37.3387, -121.8853]} />
-                </Map>
             </Box>
         </Box>
     </>
