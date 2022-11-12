@@ -32,24 +32,36 @@ function DroneFleetData() {
         <Box display='flex' flexDirection='row' marginTop='1%'>
             
             {rows.map((row)=>(
-            <Button>
+            <Button display='flex'>
                 <Box border='1px solid blue' borderRadius={2} display='flex' flexDirection='row' p={2} color='black'>
                 
                     <Box display='flex' justifyContent='flex-start' flexDirection='column'>
-                    <Typography>{row[0]}</Typography>
-                    <Typography>{row[1]}</Typography>
-                    <Typography>{row[2]}</Typography>
-                    <Typography border='1px solid red' borderRadius={1} backgroundColor='#FCCDCC' color={()=>chooseColor(row[3])}>{row[3]}</Typography>
-                </Box>
-                <Box>
-                    <img src={img}/>
+                        <Typography>{row[0]}</Typography>
+                        <Typography>{row[1]}</Typography>
+                        <Typography>{row[2]}</Typography>
+                        <Typography p={0.5} border='1px solid red' borderRadius={1} backgroundColor='#FCCDCC' color={()=>chooseColor(row[3])}>{row[3]}</Typography>
+                    </Box>
+                <Box display='flex' justifyContent='flex-end'>
+                    <img src={img} width='70%' height='70%'/>
                 </Box>
                 </Box>
             </Button>
             ))}
-            
         </Box>
-        
+        <Box>
+            <Box>
+                <Typography>Drone ID #1</Typography>
+                <Typography>Tracking Details</Typography>
+                <Typography>Status</Typography>
+            </Box>
+            <Box>
+                <Box>
+                    <Typography>Drone</Typography>
+                    <Typography>Drone ID #1</Typography>
+                    <Typography>DJI Mini SE</Typography>
+                </Box>
+            </Box>
+        </Box>
     </Box>
     </>
 }
