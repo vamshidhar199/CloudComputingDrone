@@ -6,6 +6,7 @@ import { CircularProgressbar,buildStyles } from 'react-circular-progressbar';
 import "react-circular-progressbar/dist/styles.css";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Chart, registerables } from 'chart.js';
+// import Map from "./components/Map";
 Chart.register(...registerables);
 
 
@@ -98,6 +99,7 @@ export default function DroneFleetStatistics (){
                     </AccordionDetails>
                 </Accordion>
             </Box>
+          
         </Box>
     </>
 }

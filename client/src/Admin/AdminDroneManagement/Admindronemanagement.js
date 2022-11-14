@@ -17,7 +17,8 @@ function AdminDroneManagement () {
     };
 
     return <>
-    <Box mt={15} ml={5}>
+    <Box display='flex' backgroundColor='white' width='100%'>
+    <Box mt={15} ml={5} >
         <Typography sx={{textAlign:'left'}} variant="h4">Drone Management</Typography>
         <Button sx={{marginRight:'86%', marginTop:'2%'}} variant="contained" >Drone List</Button>
         <Typography sx={{marginRight:'48%', marginTop:'5%'}} variant="h4" >Add, Edit and Update Drone</Typography>
@@ -49,6 +50,7 @@ function AdminDroneManagement () {
                 </TableBody>
             </Table>
         </TableContainer>
+    </Box>
     </Box>
     </>
 
