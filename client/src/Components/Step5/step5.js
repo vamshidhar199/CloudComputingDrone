@@ -145,7 +145,7 @@ const Step5 = (props) => {
                     position: "left",
                     marginTop: "0px",
                     textAlign: "left",
-                    border: "1px solid grey",
+                    // border: "1px solid grey",
                   }}
                 >
                   {" "}
