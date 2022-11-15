@@ -12,18 +12,30 @@ import { LocalizationProvider } from "@mui/x-date-pickers-pro";
 import { AdapterDayjs } from "@mui/x-date-pickers-pro/AdapterDayjs";
 import { DateRangePicker } from "@mui/x-date-pickers-pro";
 import { StaticDateRangePicker } from "@mui/x-date-pickers-pro/StaticDateRangePicker";
-import DroneCalendarDetails from "./droneCalendar";
+// import DroneCalendarDetails from "./droneCalendar";
 import SelectedDroneDetailsFlight from "./SelectedDroneDetailsFlight";
 import "./droneDetailed.css";
 import img1 from "../../Assets/plus.png";
+import { blue } from "@mui/material/colors";
 
 const SelectedDroneDetails = (props) => {
   const [value, setValue] = React.useState([null, null]);
+  const [duration, setDuration] = React.useState(0);
   console.log("Drone:", props.drone);
   console.log("farmLand:", props.farmLand);
+  //   console.log(value[1].$D - value[0].$D);
+  const handleDuration = (value) => {
+    console.log(value);
+    if (value[1]) {
+      const temp = value[1].$D - value[0].$D;
+      setDuration(temp);
+      console.log(temp);
+    }
+    setValue(value);
+  };
   return (
     <div className="roDrone">
-      <div>
+      <div className="daterangecal">
         <LocalizationProvider
           dateAdapter={AdapterDayjs}
           localeText={{ start: "Start", end: "End" }}
@@ -31,18 +43,19 @@ const SelectedDroneDetails = (props) => {
           <StaticDateRangePicker
             value={value}
             onChange={(newValue) => {
-              setValue(newValue);
+              handleDuration(newValue);
             }}
             renderInput={(startProps, endProps) => (
               <React.Fragment>
                 <TextField {...startProps} />
-                <Box sx={{ mx: 2 }}> to </Box>
+                <Box sx={{ mx: 2, backgroundColor: blue }}> to </Box>
                 <TextField {...endProps} />
               </React.Fragment>
             )}
           />
         </LocalizationProvider>
       </div>
+
       <div>
         {/* <table className="dronedetails">
           {/* <tr>
@@ -87,19 +100,37 @@ const SelectedDroneDetails = (props) => {
           marginTop={10}
           marginLeft={10}
           flexDirection="column"
+          padding={2}
         >
-          <Typography>Farm : {props.farmLand.location}</Typography>
+          <Typography align="left" fontWeight="lightweight">
+            <b>Farm : </b> {props.farmLand.location}
+          </Typography>
           <Typography align="left">
             {" "}
-            FarmLand :{props.farmLand.title} : {props.farmLand.category}{" "}
+            <b>FarmLand : </b>
+            {props.farmLand.title} - {props.farmLand.category}{" "}
           </Typography>
-          <Typography align="left"> Service :{props.drone.service}</Typography>
-          <Typography align="left"> Rental :by date</Typography>
-          <Typography align="left"> Duration :</Typography>
+          <Typography align="left">
+            {" "}
+            <b>Service : </b>
+            {props.drone.service}
+          </Typography>
+          <Typography align="left">
+            {" "}
+            <b>Rental : </b>by date
+          </Typography>
+          <Typography align="left">
+            {" "}
+            <b>Duration : </b>
+            {duration}
+          </Typography>
           <Box flexDirection={"column"}>
-            <Typography align="left"> Flight times per day :</Typography>
+            <Typography align="left">
+              {" "}
+              <b>Flight times per day :</b>
+            </Typography>
             <Box display="flex" flexDirection="row">
-              <TextField label="Time" />
+              <TextField sx={{ mt: "12px" }} label="Time" />
               <Button>Delete</Button>
               <Button>
                 <Box
@@ -109,9 +140,11 @@ const SelectedDroneDetails = (props) => {
                   p={1}
                   backgroungColor="white"
                   flexDirection="column"
+                  width={170}
+                  //   marginTop={}
                 >
                   <Typography align="start">Add a flight Time</Typography>
-                  <img src={img1} width="40%" height="40%" />
+                  <img src={img1} width="20%" height="20%" align="center" />
                 </Box>
               </Button>
             </Box>

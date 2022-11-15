@@ -87,9 +87,9 @@ const Step3 = (props) => {
           </button>
           {/* <Typography fontWeight={3} mt={2} ml={-12}> <b>$80</b> / per hour</Typography> */}
         </div>
-        <Typography fontWeight={3} mt={2} ml={-65}>
+        <Typography fontWeight={3} mt={2} ml={"-80.5%"}>
           {" "}
-          <b>Date & Time : </b>
+          <b>Date & Time :</b> Nov 15th, 2022
         </Typography>
 
         <div className="loc-s3">

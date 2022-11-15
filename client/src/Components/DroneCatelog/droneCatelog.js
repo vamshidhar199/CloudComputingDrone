@@ -281,8 +281,11 @@ const DroneCatelog = (props) => {
       <Box
         sx={{
           display: "inline-block",
-          border: "1px solid black",
+          border: "1.5px solid black",
           padding: "15px",
+          color: "blue",
+          backgroundColor: "#F3F3F5",
+          borderRadius: 4,
         }}
       >
         {selectValues.map((value, index) => {
@@ -295,25 +298,51 @@ const DroneCatelog = (props) => {
                 width: 120,
                 display: "inline-block",
                 marginLeft: "10px",
+                // backgroundColor: "#100E93",
+                textEmphasisColor: "white",
+                textDecorationColor: "white",
+                color: "white",
+                // border: "1px solid grey",
+                borderRadius: 15,
               }}
               renderInput={(params) => (
-                <TextField {...params} label={value.label} />
+                <TextField
+                  sx={{
+                    "& label": { color: "black" },
+                    textDecorationColor: "white",
+                    borderRadius: 5,
+                  }}
+                  inputProps={{ sx: { color: "white" } }}
+                  {...params}
+                  label={value.label}
+                />
               )}
             />
           );
         })}
-        {
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker
-              label="Date"
-              value={value}
-              onChange={(newValue) => {
-                setValue(newValue);
-              }}
-              renderInput={(params) => <TextField {...params} />}
-            />
-          </LocalizationProvider>
-        }
+        <div
+          style={{
+            display: "inline-block",
+            marginLeft: "10px",
+          }}
+        >
+          {
+            <LocalizationProvider
+              sx={{ marginLeft: "10px" }}
+              dateAdapter={AdapterDayjs}
+            >
+              <DatePicker
+                label={<b className="dateclass">Date</b>}
+                className="datepickerclass"
+                value={value}
+                onChange={(newValue) => {
+                  setValue(newValue);
+                }}
+                renderInput={(params) => <TextField {...params} />}
+              />
+            </LocalizationProvider>
+          }
+        </div>
         {/* <button
           className="SearchButton"
           style={{

@@ -14,3 +14,12 @@
   background-color: "#0096FF";
   /* alignItems: "center", */
 }
+
+.datepickerclass {
+  width: 10px;
+  color: black;
+}
+
+.dateclass {
+  color: black;
+}
