@@ -109,7 +109,7 @@ function StartService(props) {
           {/* <iframe is="x-frame-bypass" src="http://ec2-52-203-10-77.compute-1.amazonaws.com/flightmonitor/"></iframe> */}
           <iframe
             id="scale-frame"
-            src="http://54.164.165.202/flightmonitor/"
+            src="http://3.85.26.117/flightmonitor/"
             sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
             target="_blank"
             width="1250px"

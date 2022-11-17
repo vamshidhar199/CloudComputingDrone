@@ -17,6 +17,7 @@ function SignUp(props) {
       const SaveData=()=>{
         // sending this page details to prev page
         // console.log(document.getElementById("Name").value)
+        if(props.data.role=="Farmer"){
         props.sendSignUpToDb(
         createData(document.getElementById("Name").value,
         document.getElementById("Address").value,
@@ -27,7 +28,25 @@ function SignUp(props) {
         document.getElementById("Nameaspercard").value,
         document.getElementById("CardCity").value,
         document.getElementById("expiry").value,
-        document.getElementById("cvv").value))
+        document.getElementById("cvv").value,
+        props.data.email,
+        props.data.phone,
+        props.data.role))
+      }
+        else{
+          props.sendSignUpToDb(
+            createData(document.getElementById("Name").value,
+            document.getElementById("Address").value,
+            document.getElementById("City").value,
+            document.getElementById("Country").value,
+            document.getElementById("ZipCode").value,
+            document.getElementById("LicenseNumber").value,
+            document.getElementById("issuingAuthority").value,
+            document.getElementById("IssuingCity").value,
+            props.data.email,
+            props.data.phone,
+            props.data.role))
+          }
       }
 
             
@@ -36,6 +55,7 @@ function SignUp(props) {
         return { Name, Address, City, Country, ZipCode,CardNumber,Nameaspercard,CardCity,expiry,cvv };
       }
     return <>
+    {console.log(props.data)}
      <div className="farmProfilePage container-fluid" style={{backgroundColor:"white"}}>
         <div className="row" style={{marginTop:"20px"}}>
             <h3 style={{color:"#1A3447",textAlign:"left"}}>Please provide additional details</h3>
@@ -50,7 +70,7 @@ function SignUp(props) {
                 required
                 id="Name"
                 label="Name"
-                defaultValue=""
+                defaultValue={props.data.name}
               />
             </div>
             <div className="row innerrow">
@@ -89,7 +109,7 @@ function SignUp(props) {
             </div>
             <div className="row innerrow" style={{justifyContent:"center"}}> </div>
           </div>
-          <div className="col-sm" style={{padding:"20px"}}>
+         {props.data.role=="Farmer" &&  <div className="col-sm" style={{padding:"20px"}}>
             <div className="row innerrow"> Payment Details</div>
             <div className="row innerrow">
               {" "}
@@ -135,7 +155,39 @@ function SignUp(props) {
               
             </div>
             <div className="row innerrow" style={{justifyContent:"center"}}> <button className="farmProfileButton-Save" onClick={()=>{SaveData()}}> Save</button></div>
-          </div>
+          </div>}
+          {props.data.role=="Pilot" &&  <div className="col-sm" style={{padding:"20px"}}>
+            <div className="row innerrow"> Pilot License Details</div>
+            <div className="row innerrow">
+              {" "}
+              <TextField
+                required
+                id="LicenseNumber"
+                label="License Number"
+                defaultValue=""
+              />
+            </div>
+            <div className="row innerrow">
+              {" "}
+              <TextField
+                required
+                id="issuingAuthority"
+                label="Issuing Authority"
+                defaultValue=""
+              />
+            </div>
+            <div className="row innerrow">
+              {" "}
+              <TextField
+                required
+                id="IssuingCity"
+                label="Issuing City"
+                defaultValue=""
+              />
+            </div>
+            
+            <div className="row innerrow" style={{justifyContent:"center"}}> <button className="farmProfileButton-Save" onClick={()=>{SaveData()}}> Save</button></div>
+          </div>}
           
         </div>
       </div>

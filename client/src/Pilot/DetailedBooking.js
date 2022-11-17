@@ -14,21 +14,21 @@ function DetailedBooking(props) {
   const [startService,setStartService]=useState(false)
   const startServiceCall = (bool) => {
   //   window.open('http://3.90.218.152/flightmonitor/','_blank')
-  //   axios.get("http://3.90.218.152/flight_data_collect/connect/14551/").then((res) => {
-  //     console.log(res);
-  //   });
-  //   setTimeout(() => {
-  //     axios.get(" http://3.90.218.152/flight_data_collect/control/setmode/14551/GUIDED/").then((res) => {
+    axios.get("http://3.85.26.117/flight_data_collect/connect/14550/").then((res) => {
+      console.log(res);
+    });
+    setTimeout(() => {
+      axios.get(" http://3.85.26.117/flight_data_collect/control/setmode/14550/GUIDED/").then((res) => {
 
-  //       axios.get("http://3.90.218.152/flight_data_collect/control/disarm/14551/").then((res) => {
+        axios.get("http://3.85.26.117/flight_data_collect/control/disarm/14550/").then((res) => {
 
-  //         axios.get("http://3.90.218.152/flight_data_collect/control/setaltitude/14551/15/").then((res) => {
-  //           console.log(res);
-  //         });
-  //       });
-  //     });
+          axios.get("http://3.85.26.117/flight_data_collect/control/setaltitude/14550/15/").then((res) => {
+            console.log(res);
+          });
+        });
+      });
       
-  //  },6000);
+   },6000);
   var nav='/StartService?id='+props.rowId
   nav=nav.replace('#','')
   navigate(nav)

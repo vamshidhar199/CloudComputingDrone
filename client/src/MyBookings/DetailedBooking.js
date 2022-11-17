@@ -66,7 +66,7 @@ function DetailedBooking(props) {
           </p>
           <div className="row">
             <div className="col-sm-2">
-              {/* <img src={require("./../Assets/drone.svg").default} /> */}
+              <img src={require("./../Assets/drone.svg").default} />
             </div>
 
             <div className="col-sm-4" style={{ float: "left" }}>
@@ -88,12 +88,12 @@ function DetailedBooking(props) {
             </div>
 
             <div className="col-sm-2">
-            {/* <img
+            <img
                   src={profileImage}
                   alt="Logo"
                   width={"110px"}
                   height={"120px"}
-                /> */}
+                />
             </div>
             <div className="col-sm-4" style={{ float: "left" }}>
               <div className="row" style={{ fontWeight: "600", color: "grey" }}>

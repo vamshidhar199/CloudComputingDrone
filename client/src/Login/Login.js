@@ -5,10 +5,29 @@ import TextField from "@mui/material/TextField";
 import { color } from "@mui/system";
 import MenuItem from '@mui/material/MenuItem';
 import SignUp from "./SignUp";
-
-
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 function Login(props) {
+  const [openSnack,setOpenSnack]=useState(false)
+  const vertical="top";
+  const horizontal="center"
+  const [severity,setSeverity]=useState()
 
+  const [message,setMessage]=useState()
+  
+  const handleClickSnack = () => {
+  setOpenSnack(true)
+    console.log(openSnack)
+  };
+
+  const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
+
+  const handleCloseSnack = () => {
+    setOpenSnack(false)
+  };
+    const [data,setData]=useState()
     const roles = [
         {
           value: 'Farmer',
@@ -23,21 +42,39 @@ function Login(props) {
     const [proceedSignUp,setproceedSignUp]=useState(false);
 
     const sendSignUpToDb=(data)=>{
+      // signup data to be sent to the dataabse
         console.log(data);
+
+        setproceedSignUp(false)
+        setSignUp(!signup);
     }
 
     const changeSignUp=()=>{
         setSignUp(!signup);
     }
 
+    const createData=(name, phone, email, password, role) =>{
+      return { name, phone, email, password, role};
+    }
     const handleSignUp=()=>{
         setproceedSignUp(true)
+        setData(createData(document.getElementById('Name').value,document.getElementById('Phone').value,document.getElementById('Email').value,document.getElementById('Password').value,document.getElementById('role').value))
+
     }
+
 
     const validateLogin=(e)=>{
         const email=document.getElementById('Email').value
         const password=document.getElementById('Password').value
         let role=null
+        console.log(email==null)
+        if(email=="" || password==""){
+          console.log("inside null")
+          setSeverity("error")
+          setMessage("Invalid Credentials")
+          handleClickSnack()
+        }
+        else{
         if(email=="pilot")
             role="pilot"
         else if(email=="farmer")
@@ -47,13 +84,25 @@ function Login(props) {
         // if(role=="pilot"){
 
         // }
-
         console.log(email + " " + password);
         props.changeLoginStatus(true,role)
+      }
+       
 
     }
   return (
     <>
+     <Snackbar
+        anchorOrigin={{ vertical, horizontal }}
+        open={openSnack}
+        onClose={handleCloseSnack}
+       
+        key={vertical + horizontal}
+        autoHideDuration={6000}
+
+      >
+        <Alert severity={severity}>{message}</Alert>
+        </Snackbar>
      { proceedSignUp ==false ? <div className="container-fluid login-container">
        { signup==false ?
        <div className="row">
@@ -105,25 +154,25 @@ function Login(props) {
                 color:"#1A3447"
               }}
             >
-              <TextField fullWidth label="Name" id="fullWidth" sx={{color:"#1A3447"}} />
+              <TextField fullWidth label="Name" id="Name" sx={{color:"#1A3447"}} />
               <br/>
               <br/>
-              <TextField fullWidth label="Phone" id="fullWidth" />
+              <TextField fullWidth label="Phone" id="Phone" />
               <br/>
               <br/>
-              <TextField fullWidth label="Email" id="fullWidth" type="email" />
+              <TextField fullWidth label="Email" id="Email" type="email" />
               <br/>
               <br/>
-              <TextField fullWidth label="Password" id="fullWidth" type="password"/>
+              <TextField fullWidth label="Password" id="Password" type="password"/>
               <br></br>
               <br></br>
-              <TextField id="role" select label="Select" helperText="Please select your role">
+              <select id="role" select label="Select" helperText="Please select your role" className="roleDropdown" onChange={(e)=>{console.log(e.value)}}>
           {roles.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
+            <option key={option.value} value={option.value}>
               {option.label}
-            </MenuItem>
+            </option>
           ))}
-        </TextField>
+        </select>
               <button className="button-login" onClick={()=>{handleSignUp()}}>Sign Up</button>
             <br/>
             <div class="divider d-flex align-items-center my-4">
@@ -136,7 +185,8 @@ function Login(props) {
         </div>
         }
       </div>:
-      <SignUp sendSignUpToDb={sendSignUpToDb}/>
+      
+      <SignUp sendSignUpToDb={sendSignUpToDb} data={data}/>
 }
     </>
   );

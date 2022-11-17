@@ -42,3 +42,9 @@ flex: 1;
 height: 1px;
 background: #1A3447;
 }
+.roleDropdown{
+    padding: 7px;
+    background-color: #e5e5e5;
+    border: 1px solid #b0b0b0;
+    border-radius: 5px;
+}
