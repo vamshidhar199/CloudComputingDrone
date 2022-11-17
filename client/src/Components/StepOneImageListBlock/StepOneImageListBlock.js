@@ -102,8 +102,7 @@ const StepOneImageListBlock = (props) => {
                     </ListItemIcon>
                     <ImageListItem key={index}>
                       <img
-                        src={value.image}
-                        height="900px"
+                        src={`${value.image}?w=120&h=120`}
                         className="farmlandimages"
                         // srcSet={require("../../Assets/crop.jpg")}
                         // src={
@@ -112,6 +111,7 @@ const StepOneImageListBlock = (props) => {
                         // srcSet={
                         //   "https://blog.taxact.com/wp-content/uploads/TXA200201-FebBlogs-Farm-150*150.jpg?w=150&h=150"
                         // }
+                        width="10px"
                         alt={" "}
                         // loading="lazy"
                       />

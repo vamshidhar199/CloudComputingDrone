@@ -4,12 +4,14 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 
-export default function AdmineditDrone() {
+function AdmineditDrone() {
 
     const navigate = useNavigate()
     const location = useLocation();
     console.log('droneId',location.state);
-    return <Box mt = {20}  spacing={2} ml={6} width='60%' >
+    return <>
+    <Box display='flex' width='100%' backgroundColor='white'>
+    <Box mt = {20}  spacing={2} ml={6} width='80%' >
         <Typography variant="h4" textAlign='left'>Edit Drone</Typography>
         <Typography textAlign='left'>Edit details of selected drone</Typography>
         <Box sx={{p:4, width:'100%' ,border: '1px solid grey', backgroundColor:'white'}}>
@@ -24,6 +26,8 @@ export default function AdmineditDrone() {
             <Button sx={{marginLeft:'80%', marginTop:'5%'}} variant="outlined">Next</Button>
         </Box>
     </Box>
+    </Box>
+    </>
+}
 
-};
-//export default AdmineditDrone;
+export default AdmineditDrone;

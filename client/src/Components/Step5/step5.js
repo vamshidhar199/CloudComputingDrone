@@ -7,6 +7,7 @@ import ListItemText from "@mui/material/ListItemText";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import SearchIcon from "@mui/icons-material/Search";
 import "./step5.css";
+import { useNavigate } from "react-router-dom";
 
 const Step5 = (props) => {
   // here we will have all the data in props to display in the page
@@ -14,6 +15,7 @@ const Step5 = (props) => {
   // refer to the stepCoreContent.js file for the props name used.
   const value = props.droneSelected;
   const farmLand = props.selectedFarmLand;
+  const navigate = useNavigate();
   return (
     <div>
       {/* <div
@@ -62,132 +64,152 @@ const Step5 = (props) => {
         </div>
       </div> */}
 
-      <div
-        style={{
-          display: "inline-block",
-          //   marginTop: "1000px",
-        }}
-      >
-        <table style={{ position: "top" }}>
-          <th>
-            <td>
-              <Typography wt="9px">Summary</Typography>
-            </td>
-          </th>
-          <th>
-            <Typography align="left">Service ID #1208, Drone ID #1</Typography>
-          </th>
-          <tr>
-            <td>
-              <img
-                src={require("../../Assets/drone.svg").default}
-                style={{
-                  border: "1px solid grey",
-                  borderRadius: "5px",
-                  marginRight: "20px",
-                }}
-              ></img>
-            </td>
-            <tr>
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <Typography variant="h6" mr={"60%"}>
+          Summary
+        </Typography>
+        <div
+          style={{ display: "flex", flexDirection: "row", marginLeft: "16%" }}
+        >
+          <div
+            style={{
+              display: "inline-block",
+              //marginTop: "100px",
+            }}
+          >
+            <table style={{ position: "top" }}>
+              {/* <th>
               <td>
-                <Typography align="left"> {value.line1}</Typography>
-                <p
-                  style={{
-                    position: "left",
-                    marginTop: "0px",
-                    textAlign: "left",
-                  }}
-                >
-                  {" "}
-                  {value.service}
-                </p>
-                <p
-                  style={{
-                    position: "left",
-                    marginTop: "0px",
-                    textAlign: "left",
-                  }}
-                >
-                  {" "}
-                  {farmLand.location}
-                </p>
-                <p
-                  style={{
-                    position: "left",
-                    marginTop: "0px",
-                    textAlign: "left",
-                  }}
-                >
-                  {" "}
-                  {farmLand.title} : {farmLand.category}
-                </p>
+                <Typography variant="h6">Summary</Typography>
               </td>
-            </tr>
-          </tr>
-        </table>
-      </div>
+            </th> */}
+              <tr>
+                <td>
+                  <img
+                    src={require("../../Assets/drone.svg").default}
+                    style={{
+                      border: "1px solid grey",
+                      borderRadius: "5px",
+                      marginRight: "20px",
+                    }}
+                  ></img>
+                </td>
+                <Typography align="left">
+                  Service ID #1208, Drone ID #1{" "}
+                </Typography>
+                <Typography align="left">{value.line1}</Typography>
+                <tr>
+                  <td>
+                    <Typography align="right"> </Typography>
+                    <p
+                      style={{
+                        position: "left",
+                        marginTop: "0px",
+                        textAlign: "left",
+                      }}
+                    >
+                      {" "}
+                      {value.service}
+                    </p>
+                    <p
+                      style={{
+                        position: "left",
+                        marginTop: "0px",
+                        textAlign: "left",
+                      }}
+                    >
+                      {" "}
+                      {farmLand.location}
+                    </p>
+                    <p
+                      style={{
+                        position: "left",
+                        marginTop: "0px",
+                        textAlign: "left",
+                      }}
+                    >
+                      {" "}
+                      {farmLand.title} : {farmLand.category}
+                    </p>
+                  </td>
+                </tr>
+              </tr>
+            </table>
+          </div>
 
-      <div
-        style={{
-          display: "inline-block",
-        }}
-      >
-        <table>
-          <tr>
-            <td>
-              <img src={require("../../Assets/drone.svg").default}></img>
-            </td>
-            <tr>
-              <td>
-                <Typography align="left"> Drone Pilot</Typography>
-                <p
-                  style={{
-                    position: "left",
-                    marginTop: "0px",
-                    textAlign: "left",
-                    border: "1px solid grey",
-                  }}
-                >
-                  {" "}
-                  Rhodes
-                </p>
-                <p
-                  style={{
-                    position: "left",
-                    marginTop: "0px",
-                    textAlign: "left",
-                  }}
-                >
-                  {" "}
-                  Lisence Number : #0192389
-                </p>
-                <p
-                  style={{
-                    position: "left",
-                    marginTop: "0px",
-                    textAlign: "left",
-                  }}
-                >
-                  {" "}
-                  Phone : 0217878787
-                </p>
-                <p
-                  style={{
-                    position: "left",
-                    marginTop: "0px",
-                    marginLeft: "0px",
-                    textAlign: "left",
-                  }}
-                >
-                  {" "}
-                  Address : alameda, US
-                </p>
-              </td>
-            </tr>
-          </tr>
-        </table>
+          <div
+            style={{
+              display: "inline-block",
+              // marginTop: "1px",
+            }}
+          >
+            <table>
+              <tr>
+                <td>
+                  <img
+                    src={require("../../Assets/mypilot.png")}
+                    style={{
+                      border: "1px solid grey",
+                      borderRadius: "5px",
+                      marginLeft: "20px",
+                      marginRight: "20px",
+                      width: "120px",
+                      marginTop: "10px",
+                    }}
+                  ></img>
+                </td>
+                <tr>
+                  <td style={{ marginRight: "200px" }}>
+                    <Typography align="left"> Drone Pilot</Typography>
+                    <p
+                      style={{
+                        position: "left",
+                        marginTop: "0px",
+                        textAlign: "left",
+                      }}
+                    >
+                      {" "}
+                      Rhodes
+                    </p>
+                    <p
+                      style={{
+                        position: "left",
+                        marginTop: "0px",
+                        textAlign: "left",
+                      }}
+                    >
+                      {" "}
+                      Lisence Number : #0192389
+                    </p>
+                    <p
+                      style={{
+                        position: "left",
+                        marginTop: "0px",
+                        textAlign: "left",
+                      }}
+                    >
+                      {" "}
+                      Phone : 0217878787
+                    </p>
+                    <p
+                      style={{
+                        position: "left",
+                        marginTop: "0px",
+                        marginLeft: "0px",
+                        textAlign: "left",
+                      }}
+                    >
+                      {" "}
+                      Address : alameda, US
+                    </p>
+                  </td>
+                </tr>
+              </tr>
+            </table>
+          </div>
+        </div>
       </div>
-      <div>
+      <div style={{ marginTop: "-20px" }}>
         <div className="row billTable">
           <div className="col-sm-2"></div>
           {/* column 1 */}
@@ -329,8 +351,7 @@ const Step5 = (props) => {
         </div>
       </div>
       <div className="row buttonRow">
-        <button className="buttonPayment" onclick="/bookdrone">
-          {" "}
+        <button className="buttonPayment" onClick={() => navigate("/")}>
           Return To Dashboard
         </button>
       </div>

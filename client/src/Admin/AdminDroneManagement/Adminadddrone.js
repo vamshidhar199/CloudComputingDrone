@@ -8,7 +8,8 @@ import { useNavigate } from "react-router-dom";
 function AdminaddDrone(){
     const navigate = useNavigate()
     return <>
-    <Box mt = {20}  spacing={2} ml={6} width='60%' >
+    <Box display='flex' backgroundColor='white' width='100%'>
+    <Box mt = {20}  spacing={2} ml={6} width='80%'>
         <Typography variant="h4" textAlign='left'>Add a New Drone</Typography>
         <Typography textAlign='left'>Register this drone into the cloud system so he drone is Available to book</Typography>
         <Box sx={{p:4, width:'100%' ,border: '1px solid grey', backgroundColor:'white'}}>
@@ -22,6 +23,7 @@ function AdminaddDrone(){
             <Button sx={{marginLeft:'0%', marginTop:'5%'}} variant="outlined" onClick={()=>{ navigate("/adminhome/dronemngt")}}>Back</Button>
             <Button sx={{marginLeft:'80%', marginTop:'5%'}} variant="outlined">Next</Button>
         </Box>
+    </Box>
     </Box>
     </>
 }

@@ -61,140 +61,149 @@ const Step4 = (props) => {
           {value.line8}
         </div>
       </div> */}
-      <div>
-        <Typography variant="h6" mr={"700px"}>
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <Typography variant="h6" mr={"60%"}>
           Summary
         </Typography>
         <div
-          style={{
-            display: "inline-block",
-            //   marginTop: "1000px",
-          }}
+          style={{ display: "flex", flexDirection: "row", marginLeft: "16%" }}
         >
-          <table style={{ position: "top" }}>
-            {/* <th>
+          <div
+            style={{
+              display: "inline-block",
+              //marginTop: "100px",
+            }}
+          >
+            <table style={{ position: "top" }}>
+              {/* <th>
               <td>
                 <Typography variant="h6">Summary</Typography>
               </td>
             </th> */}
-            <tr>
-              <td>
-                <img
-                  src={require("../../Assets/drone.svg").default}
-                  style={{
-                    border: "1px solid grey",
-                    borderRadius: "5px",
-                    marginRight: "20px",
-                  }}
-                ></img>
-              </td>
-              <Typography align="left">{value.line1}</Typography>
               <tr>
                 <td>
-                  <Typography align="right"> </Typography>
-                  <p
+                  <img
+                    src={require("../../Assets/drone.svg").default}
                     style={{
-                      position: "left",
-                      marginTop: "0px",
-                      textAlign: "left",
+                      border: "1px solid grey",
+                      borderRadius: "5px",
+                      marginRight: "20px",
                     }}
-                  >
-                    {" "}
-                    {value.service}
-                  </p>
-                  <p
-                    style={{
-                      position: "left",
-                      marginTop: "0px",
-                      textAlign: "left",
-                    }}
-                  >
-                    {" "}
-                    {farmLand.location}
-                  </p>
-                  <p
-                    style={{
-                      position: "left",
-                      marginTop: "0px",
-                      textAlign: "left",
-                    }}
-                  >
-                    {" "}
-                    {farmLand.title} : {farmLand.category}
-                  </p>
+                  ></img>
                 </td>
+                <Typography align="left">{value.line1}</Typography>
+                <tr>
+                  <td>
+                    <Typography align="right"> </Typography>
+                    <p
+                      style={{
+                        position: "left",
+                        marginTop: "0px",
+                        textAlign: "left",
+                      }}
+                    >
+                      {" "}
+                      {value.service}
+                    </p>
+                    <p
+                      style={{
+                        position: "left",
+                        marginTop: "0px",
+                        textAlign: "left",
+                      }}
+                    >
+                      {" "}
+                      {farmLand.location}
+                    </p>
+                    <p
+                      style={{
+                        position: "left",
+                        marginTop: "0px",
+                        textAlign: "left",
+                      }}
+                    >
+                      {" "}
+                      {farmLand.title} : {farmLand.category}
+                    </p>
+                  </td>
+                </tr>
               </tr>
-            </tr>
-          </table>
-        </div>
+            </table>
+          </div>
 
-        <div
-          style={{
-            display: "inline-block",
-          }}
-        >
-          <table>
-            <tr>
-              <td>
-                <img
-                  src={require("../../Assets/drone.svg").default}
-                  style={{
-                    // border: "1px solid grey",
-                    borderRadius: "5px",
-                  }}
-                ></img>
-              </td>
+          <div
+            style={{
+              display: "inline-block",
+              // marginTop: "1px",
+            }}
+          >
+            <table>
               <tr>
                 <td>
-                  <Typography align="left"> Drone Pilot</Typography>
-                  <p
+                  <img
+                    src={require("../../Assets/mypilot.png")}
                     style={{
-                      position: "left",
-                      marginTop: "0px",
-                      textAlign: "left",
+                      border: "1px solid grey",
+                      borderRadius: "5px",
+                      marginLeft: "20px",
+                      marginRight: "20px",
+                      width: "120px",
+                      marginTop: "-19px",
                     }}
-                  >
-                    {" "}
-                    Rhodes
-                  </p>
-                  <p
-                    style={{
-                      position: "left",
-                      marginTop: "0px",
-                      textAlign: "left",
-                    }}
-                  >
-                    {" "}
-                    Lisence Number : #0192389
-                  </p>
-                  <p
-                    style={{
-                      position: "left",
-                      marginTop: "0px",
-                      textAlign: "left",
-                    }}
-                  >
-                    {" "}
-                    Phone : 0217878787
-                  </p>
-                  <p
-                    style={{
-                      position: "left",
-                      marginTop: "0px",
-                      marginLeft: "0px",
-                      textAlign: "left",
-                    }}
-                  >
-                    {" "}
-                    Address : alameda, US
-                  </p>
+                  ></img>
                 </td>
+                <tr>
+                  <td style={{ marginRight: "200px" }}>
+                    <Typography align="left"> Drone Pilot</Typography>
+                    <p
+                      style={{
+                        position: "left",
+                        marginTop: "0px",
+                        textAlign: "left",
+                      }}
+                    >
+                      {" "}
+                      Rhodes
+                    </p>
+                    <p
+                      style={{
+                        position: "left",
+                        marginTop: "0px",
+                        textAlign: "left",
+                      }}
+                    >
+                      {" "}
+                      Lisence Number : #0192389
+                    </p>
+                    <p
+                      style={{
+                        position: "left",
+                        marginTop: "0px",
+                        textAlign: "left",
+                      }}
+                    >
+                      {" "}
+                      Phone : 0217878787
+                    </p>
+                    <p
+                      style={{
+                        position: "left",
+                        marginTop: "0px",
+                        marginLeft: "0px",
+                        textAlign: "left",
+                      }}
+                    >
+                      {" "}
+                      Address : alameda, US
+                    </p>
+                  </td>
+                </tr>
               </tr>
-            </tr>
-          </table>
+            </table>
+          </div>
         </div>
       </div>
-      <div>
+      <div style={{ marginTop: "-20px" }}>
         <div className="row billTable">
           <div className="col-sm-2"></div>
           {/* column 1 */}

@@ -60,10 +60,13 @@ const StepCoreContent = (props) => {
       break;
   }
   return (
-    <Box mt={5}>
+    <Box mt={2}>
       {component}
       {selectedFarmLand && (
-        <Typography> Selected FarmLand: {selectedFarmLand.title} </Typography>
+        <Typography sx={{ mt: 1 }}>
+          {" "}
+          Selected FarmLand: {selectedFarmLand.title}{" "}
+        </Typography>
       )}
     </Box>
   );
