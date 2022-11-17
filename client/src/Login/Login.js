@@ -68,10 +68,10 @@ function Login(props) {
         const password=document.getElementById('Password').value
         let role=null
         console.log(email==null)
-        if(email=="" || password==""){
+        if(email==""){
           console.log("inside null")
           setSeverity("error")
-          setMessage("Invalid Credentials")
+          setMessage("Invalid Credentials - or no details entered")
           handleClickSnack()
         }
         else{
