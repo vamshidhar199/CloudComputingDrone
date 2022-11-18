@@ -493,6 +493,7 @@ const DroneCatelog = (props) => {
             <SelectedDroneDetails
               drone={droneSelected}
               farmLand={props.selectedFarmLand}
+              handleDateRange={props.handleDateRange}
             />
           </div>
         )}

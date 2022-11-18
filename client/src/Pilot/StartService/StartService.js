@@ -12,6 +12,9 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+import Stack from '@mui/material/Stack';
 
 function StartService(props) {
     const [open, setOpen] = useState(false);
@@ -19,9 +22,17 @@ function StartService(props) {
   const handleClose = () => setOpen(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
-
+  const [alertMessage,setAlertMessage]=useState();
+  const [showAlert,setShowAlert]=useState(false);
   
-  
+  const markCompleted=()=>{
+   //api call
+    setAlertMessage("Succesfully marked as complete");
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 2000);
+  }
   useEffect(() => {
    
     console.log(searchParams.get("id"))
@@ -80,11 +91,20 @@ function StartService(props) {
             
         </Box>
         </Modal>
-       
+      
+      
+       {showAlert && <Stack sx={{ width: '120%',zIndex:'10',marginTop:"-10px" }} spacing={2}>
+        <Alert severity="success">
+        
+        {alertMessage}
+      </Alert>
+      </Stack>}
+
+
       <div className="row">
         <div className="col-sm-2">
         <div className="row buttonRow">
-                <button className="buttonPayment" style={{height:"100px"}} onClick={()=>test()}>
+                <button className="buttonPayment" style={{height:"100px"}} onClick={()=>markCompleted()}>
                   Mark as completed
                 </button>
               </div>

@@ -6,12 +6,26 @@ import { Button } from "@progress/kendo-react-buttons";
 import { PDFExport, savePDF } from "@progress/kendo-react-pdf";
 import axios from "axios";
 import StartService from "./StartService/StartService";
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+import Stack from '@mui/material/Stack';
 
 
 function DetailedBooking(props) {
   const navigate = useNavigate();
   const pdfExportComponent = useRef(null);
   const [startService,setStartService]=useState(false)
+  const [alertMessage,setAlertMessage]=useState();
+  const [showAlert,setShowAlert]=useState(false);
+  const markCompleted = ()=>{
+    //api call
+     setAlertMessage("Succesfully marked as complete");
+     setShowAlert(true);
+     setTimeout(() => {
+       setShowAlert(false);
+     }, 2000);
+   }
+
   const startServiceCall = (bool) => {
   //   window.open('http://3.90.218.152/flightmonitor/','_blank')
     axios.get("http://3.85.26.117/flight_data_collect/connect/14550/").then((res) => {
@@ -32,13 +46,19 @@ function DetailedBooking(props) {
   var nav='/StartService?id='+props.rowId
   nav=nav.replace('#','')
   navigate(nav)
-   
-
 }
+
+
   return (
     <>
       {/* <button onClick={()=>{pdfExportComponent.current.save();}}>save pdf</button> */}
       {/* <PDFExport  ref={pdfExportComponent}> */}
+      {showAlert && <Stack sx={{ width: '140%',zIndex:'10',marginTop:"-10px" }} spacing={2}>
+        <Alert severity="success">
+        
+        {alertMessage}
+      </Alert>
+      </Stack>}
       <div style={{ backgroundColor: "white" }}>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           {" "}
@@ -155,12 +175,12 @@ function DetailedBooking(props) {
           <div className="row billTable">
             <div className="col-sm-4">
               <div className="row buttonRow">
-                <button className="buttonPayment" onClick={() => startServiceCall(true)}  >
+                <button className="buttonPayment"  disabled={props.row.status=="Complete"?true:false} onClick={() => startServiceCall(true)}  >
                   Start service
                 </button>
               </div>
               <div className="row buttonRow">
-                <button className="buttonPayment" >
+                <button className="buttonPayment" disabled={props.row.status=="Complete"?true:false} onClick={()=> markCompleted()} >
                   Mark as completed
                 </button>
               </div>

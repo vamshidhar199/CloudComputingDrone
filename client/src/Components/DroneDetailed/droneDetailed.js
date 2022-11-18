@@ -5,33 +5,54 @@ import { Button, Typography } from "@mui/material";
 import StepOneImageListBlock from "../StepOneImageListBlock/StepOneImageListBlock";
 import DroneCatelog from "../DroneCatelog/droneCatelog";
 import * as React from "react";
-
+import * as moment from 'moment';
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import { LocalizationProvider } from "@mui/x-date-pickers-pro";
 import { AdapterDayjs } from "@mui/x-date-pickers-pro/AdapterDayjs";
-import { DateRangePicker } from "@mui/x-date-pickers-pro";
-import { StaticDateRangePicker } from "@mui/x-date-pickers-pro/StaticDateRangePicker";
+// import { DateRangePicker } from "@mui/x-date-pickers-pro";
+// import { StaticDateRangePicker } from "@mui/x-date-pickers-pro/StaticDateRangePicker";
 // import DroneCalendarDetails from "./droneCalendar";
 import SelectedDroneDetailsFlight from "./SelectedDroneDetailsFlight";
 import "./droneDetailed.css";
 import img1 from "../../Assets/plus.png";
 import { blue } from "@mui/material/colors";
-
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; // theme css file 
+import { DateRangePicker } from 'react-date-range';
+import { addDays } from 'date-fns';
 const SelectedDroneDetails = (props) => {
   const [value, setValue] = React.useState([null, null]);
   const [duration, setDuration] = React.useState(0);
   console.log("Drone:", props.drone);
   console.log("farmLand:", props.farmLand);
-  //   console.log(value[1].$D - value[0].$D);
-  const handleDuration = (value) => {
-    console.log(value);
-    if (value[1]) {
-      const temp = value[1].$D - value[0].$D;
-      setDuration(temp);
-      console.log(temp);
+  const [state, setState] = React.useState([
+    {
+      startDate: new Date(),
+      endDate: addDays(new Date(), 7),
+      
+      key: 'selection'
     }
-    setValue(value);
+  ]);
+  //   console.log(value[1].$D - value[0].$D);
+  const handleDuration = (item) => {
+   
+    console.log("start date "+item.startDate);
+    console.log("end date "+item.endDate);
+    // if (value[1]) {
+    //   const temp = value[1].$D - value[0].$D;
+    //   setDuration(temp);
+    //   console.log(temp);
+    // }
+    if(item && item.startDate && item.endDate)
+    {setValue([item.startDate,item.endDate]);
+      
+      var start = moment(item.startDate, "YYYY-MM-DD");
+      var end = moment(item.endDate, "YYYY-MM-DD");
+      props.handleDateRange([item.startDate,item.endDate])
+        //Difference in number of days
+        setDuration(moment.duration(end.diff(start)).asDays()+1);
+    }
   };
   return (
     <div className="roDrone">
@@ -40,7 +61,7 @@ const SelectedDroneDetails = (props) => {
           dateAdapter={AdapterDayjs}
           localeText={{ start: "Start", end: "End" }}
         >
-          <StaticDateRangePicker
+          {/* <StaticDateRangePicker
             value={value}
             onChange={(newValue) => {
               handleDuration(newValue);
@@ -52,7 +73,15 @@ const SelectedDroneDetails = (props) => {
                 <TextField {...endProps} />
               </React.Fragment>
             )}
-          />
+          /> */}
+          <DateRangePicker
+  onChange={item => {setState([item.selection]);handleDuration(item.selection)}}
+  showSelectionPreview={true}
+  moveRangeOnFirstSelection={false}
+  months={1}
+  ranges={state}
+  direction="horizontal"
+/>;
         </LocalizationProvider>
       </div>
 

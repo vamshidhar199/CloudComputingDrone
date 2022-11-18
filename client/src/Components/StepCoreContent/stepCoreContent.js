@@ -29,6 +29,7 @@ const StepCoreContent = (props) => {
         <DroneCatelog
           selectedFarmLand={selectedFarmLand}
           setdroneSelected={setdroneSelected}
+          handleDateRange={props.handleDateRange}
         />
       );
       break;
@@ -37,6 +38,7 @@ const StepCoreContent = (props) => {
         <Step3
           selectedFarmLand={selectedFarmLand}
           droneSelected={droneSelected}
+          dateRange={props.dateRange}
         />
       );
       break;
@@ -45,6 +47,7 @@ const StepCoreContent = (props) => {
         <Step4
           selectedFarmLand={selectedFarmLand}
           droneSelected={droneSelected}
+          dateRange={props.dateRange}
         />
       );
       break;
@@ -53,6 +56,7 @@ const StepCoreContent = (props) => {
         <Step5
           selectedFarmLand={selectedFarmLand}
           droneSelected={droneSelected}
+          dateRange={props.dateRange}
         />
       );
       break;

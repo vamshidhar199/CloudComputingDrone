@@ -7,6 +7,7 @@ import ListItemText from "@mui/material/ListItemText";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import SearchIcon from "@mui/icons-material/Search";
 import "../../MyBookings/DetailedBooking.css";
+import * as moment from 'moment';
 
 const Step3 = (props) => {
   // here we will have all the data in props to display in the page
@@ -88,8 +89,9 @@ const Step3 = (props) => {
           {/* <Typography fontWeight={3} mt={2} ml={-12}> <b>$80</b> / per hour</Typography> */}
         </div>
         <Typography fontWeight={3} mt={2} ml={"-80.5%"}>
-          {" "}
-          <b>Date & Time :</b> Nov 15th, 2022
+          {console.log(new Date(props.dateRange[0]))}
+          <b>Start Date & Time :</b> {(new Date(props.dateRange[0]) +" ").replace("00:00:00 GMT-0800 (Pacific Standard Time)","")}
+         <br></br> <b>End Date & Time :</b> {(new Date(props.dateRange[1]) +" ").replace("00:00:00 GMT-0800 (Pacific Standard Time)","")}
         </Typography>
 
         <div className="loc-s3">

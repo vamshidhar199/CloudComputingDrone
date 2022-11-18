@@ -20,6 +20,10 @@ export default function HorizontalLinearStepper() {
     return skipped.has(step);
   };
 
+  const [dateRange,setDateRange]=React.useState([])
+  const handleDateRange=(range)=>{
+    setDateRange(range)
+  }
   const handleNext = () => {
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
@@ -70,6 +74,8 @@ export default function HorizontalLinearStepper() {
             selectedFarmLand={selectedFarmLand}
             droneSelected={droneSelected}
             setdroneSelected={setdroneSelected}
+            handleDateRange={handleDateRange}
+            dateRange={dateRange}
           />
         </div>
       )}
