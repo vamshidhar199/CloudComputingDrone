@@ -19,7 +19,7 @@ import FarmProfile from './Profile/FarmProfile';
 import Pilot from './Pilot/Pilot'
 import { useNavigate } from "react-router-dom";
 import Schedule from './Pilot/Schedule';
-import AdmineditDrone from './Admin/AdminDroneManagement/Admineditdrone';
+import AdmineditdeleteDrone from './Admin/AdminDroneManagement/Admineditdeletedrone';
 import AdmindroneManagement from './Admin/AdminDroneManagement/Admindronemanagement';
 import PilotBooking from './Pilot/PilotBookings';
 import StartService from './Pilot/StartService/StartService'
@@ -137,7 +137,7 @@ function App() {
           <Route path = "dronedata" />
           <Route path = "droneAI" />
           <Route path = "adminadddrone" element={<AdminaddDrone/>}/>
-          <Route path = "admineditdrone" element={<AdmineditDrone/>}/>
+          <Route path = "admineditdeletedrone" element={<AdmineditdeleteDrone/>}/>
           <Route path = "editdronecatalog" element={<AdmineditdroneCatalog/>}/>
         </Route>
       </Routes>
