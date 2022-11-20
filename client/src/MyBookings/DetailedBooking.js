@@ -1,4 +1,4 @@
-import React, { Component,useRef } from "react";
+import React, { Component,useEffect,useRef, useState } from "react";
 import "./DetailedBooking.css";
 import { useNavigate } from "react-router-dom";
 import profileImage from "./../Assets/profile1.png";
@@ -21,8 +21,16 @@ function DetailedBooking(props) {
   
     // });
   }
+  const [currBookingDetails,setCurrBookingDetails]=useState();
+  useEffect(()=>{
+    axios.get('http://localhost:8080/agriDrone/getBooking/'+props.row.bookingId).then((res)=>{
+      setCurrBookingDetails(res.data)
+    })
+  },[])
+
   return (
     <>
+    {console.log(props.row)}
     {/* <button onClick={()=>{pdfExportComponent.current.save();}}>save pdf</button> */}
     <PDFExport  ref={pdfExportComponent}>
       <div style={{ backgroundColor: "white" }}>
@@ -43,7 +51,7 @@ function DetailedBooking(props) {
         </div>
         <div className="row" style={{ backgroundColor: "white",marginLeft:"10px",marginRight:"10px" }}>
           <div className="col-sm headingDetails">
-            <h3 style={{ float: "left" }}>Service {props.rowId}</h3>
+            <h3 style={{ float: "left" }}>Service #{props.row.bookingId}</h3>
           </div>
         </div>
 
@@ -71,7 +79,7 @@ function DetailedBooking(props) {
 
             <div className="col-sm-4" style={{ float: "left" }}>
               <div className="row" style={{ fontWeight: "600", color: "grey" }}>
-                DJ Mini{" "}
+               {props.row.brand}
               </div>
               <div className="row" style={{ fontWeight: "600", color: "grey" }}>
                 {props.rowId}
@@ -80,10 +88,10 @@ function DetailedBooking(props) {
                 Location{" "}
               </div>
               <div className="row" style={{ fontWeight: "300", color: "grey" }}>
-                360 South Market Street{" "}
+                {props.row.farmLand.split('$')[0]}
               </div>
               <div className="row" style={{ fontWeight: "300", color: "grey" }}>
-                Date{" "}
+                {props.row.fromDate}
               </div>
             </div>
 
@@ -100,16 +108,16 @@ function DetailedBooking(props) {
                 Drone Polot{" "}
               </div>
               <div className="row" style={{ fontWeight: "600", color: "grey" }}>
-                Ron Mayer{" "}
+                Name : {props.row.pilotName}
               </div>
               <div className="row" style={{ fontWeight: "600", color: "grey" }}>
-                San Jose{" "}
+               
               </div>
               <div className="row" style={{ fontWeight: "300", color: "grey" }}>
-                360 South Market Street{" "}
+               
               </div>
               <div className="row" style={{ fontWeight: "300", color: "grey" }}>
-                Licence : 128945{" "}
+                Licence : {props.row.license}
               </div>
             </div>
           </div>
@@ -128,7 +136,7 @@ function DetailedBooking(props) {
               <div className="col-sm columnBill columnBillBold">
                 Drone Base Cost
               </div>
-              <div className="col-sm-2 columnBillsub">20</div>
+              <div className="col-sm-2 columnBillsub">{currBookingDetails && currBookingDetails[0].droneBaseCost}</div>
               {/* <img src={require("./../Assets/Line.svg").default} /> */}
             </div>
             {/* Drone based cost */}
@@ -157,7 +165,7 @@ function DetailedBooking(props) {
             </div>
             <div className="row billtableRow">
               <div className="col-sm columnBill columnBillsub">
-                1x Data Collection - Crop Health
+                1x {props.row.serviceType} 
               </div>
               <div className="col-sm-2 columnBillsub">20</div>
               {/* <img src={require("./../Assets/Line.svg").default} /> */}
@@ -174,7 +182,7 @@ function DetailedBooking(props) {
             </div>
             <div className="row billtableRow">
               <div className="col-sm columnBill columnBillsub">
-                1 Day - On-Demand
+              {currBookingDetails && currBookingDetails[0].serviceDuration} Day - On-Demand
               </div>
               <div className="col-sm-2 columnBillsub">20</div>
               {/* <img src={require("./../Assets/Line.svg").default} /> */}
@@ -198,7 +206,7 @@ function DetailedBooking(props) {
             </div>
             <div className="row billtableRow">
               <div className="col-sm columnBill columnBillsub">Price</div>
-              <div className="col-sm-2 columnBillsub">20</div>
+              <div className="col-sm-2 columnBillsub">{currBookingDetails && currBookingDetails[0].totalPrice}</div>
               {/* <img src={require("./../Assets/Line.svg").default} /> */}
             </div>
 
@@ -229,8 +237,8 @@ function DetailedBooking(props) {
             </div>
 
             <div className="row billtableRow">
-              <div className="col-sm columnBill columnBillsub">1x Camera </div>
-              <div className="col-sm-2 columnBillsub">20</div>
+              <div className="col-sm columnBill columnBillsub">1x {currBookingDetails && currBookingDetails[0].equipment} </div>
+              <div className="col-sm-2 columnBillsub">{currBookingDetails && currBookingDetails[0].equipmentCost}</div>
               {/* <img src={require("./../Assets/Line.svg").default} /> */}
             </div>
 
@@ -248,21 +256,21 @@ function DetailedBooking(props) {
               <div className="col-sm columnBill columnBillsub">
                 Drone setup and labor
               </div>
-              <div className="col-sm-2 columnBillsub">20</div>
+              <div className="col-sm-2 columnBillsub">{currBookingDetails && currBookingDetails[0].pilotCharge}</div>
               {/* <img src={require("./../Assets/Line.svg").default} /> */}
             </div>
 
             {/* Pilot Charge */}
           </div>
         </div>
-        {props.row.status == "Complete" ? (
+        {props.row.status == "complete" ? (
           <div className="row buttonRow">
             <button
               className="buttonPayment"
               onClick={() => {
                 navigate({
                   pathname: "/service",
-                  search: "?rowid="+props.rowId.replace("#",""),
+                  search: "?rowid="+props.row.bookingId,
                 });
               }}
             >

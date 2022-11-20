@@ -253,19 +253,7 @@ const DroneCatelog = (props) => {
 
     console.log("No of field filled: ", noOfFieldsFilled);
 
-    // const field = event.target.id.split('-')[0];
-    // if (value && valuesSelected.indexOf(field) === -1) {
-    //     const x = valuesSelected.map(e => e);
-    //     x.push(field);
-    //     setvaluesSelected(x);
-    // }
-    // if (!value && field && valuesSelected.indexOf(field) !== -1) { // deselected the values
-    //     const x = [];
-    //     for (let i = 0; i < valuesSelected.length; i++) {
-    //         if (valuesSelected[i] !== field) x.push(field);
-    //     }
-    //     setvaluesSelected(x);
-    // }
+    
   };
 
   const handleSelect = (value) => {
@@ -343,24 +331,7 @@ const DroneCatelog = (props) => {
             </LocalizationProvider>
           }
         </div>
-        {/* <button
-          className="SearchButton"
-          style={{
-            icon: "search",
-            marginLeft: "10px",
-            borderRadius: "7px",
-            color: "white",
-            width: "100px",
-            padding: "5px",
-            display: "inline-block",
-            backgroundColor: "#0096FF",
-            alignItems: "center",
-            align: "center",
-          }}
-          onClick={onChangeHandler}
-        >
-          Search
-        </button> */}
+       
       </Box>
       <button
         className="SearchButton"

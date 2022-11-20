@@ -1,5 +1,5 @@
 import { Box } from "@mui/system";
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { Autocomplete, TextField, Typography } from "@mui/material";
 import SelectedDroneDetails from "../DroneDetailed/droneDetailed";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -8,7 +8,8 @@ import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import SearchIcon from "@mui/icons-material/Search";
 import "./step5.css";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
+import { format } from 'date-fns';
 const Step5 = (props) => {
   // here we will have all the data in props to display in the page
   // need to add th html tags
@@ -16,53 +17,43 @@ const Step5 = (props) => {
   const value = props.droneSelected;
   const farmLand = props.selectedFarmLand;
   const navigate = useNavigate();
+  const convertDate=(str)=> {
+    var date = new Date(str),
+      mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+      day = ("0" + date.getDate()).slice(-2);
+      console.log("inside converter")
+    return [date.getFullYear(), mnth, day].join("-");
+  }
+
+  const [bookingData,setBookingData]=useState();
+  useEffect(() => {
+    console.log(value);
+    console.log(farmLand);
+    console.log(convertDate(props.dateRange[0]))
+    const auth = JSON.parse(localStorage.getItem("auth"));
+   
+
+    axios.post('http://localhost:8080/agriDrone/bookDrone',{
+      serviceType: value.service,
+      brand: value.line1,
+      equipment: "camera",
+      price: value.price,
+      pilotEmail: "",
+      farmerEmail: auth.loginjson[0].userName,
+       farmLand: farmLand.title+"$"+farmLand.category,
+       fromDate: convertDate(props.dateRange[0]),
+       toDate: convertDate(props.dateRange[1]),
+       paymentDate:false,
+      status:"active"
+  
+    }).then((res)=>{
+      console.log(res);
+      setBookingData(res.data)
+    })
+  }, []);
   return (
     <div>
-      {/* <div
-        className="drone-border"
-        style={{
-          display: "inline-block",
-          marginLeft: "1px",
-          border: "1px solid grey",
-          marginTop: "-1000px",
-          //   float: "middle",
-          //   marginBottom: "1000px",
-        }}
-      >
-        <img
-          src={require("../../Assets/drone.svg").default}
-          //   style={{ border: "1px solid grey" }}
-        />
-      </div>
-      <div
-        className="drone-step4"
-        style={{
-          display: "inline-block",
-          width: "200px",
-          marginRight: "550px",
-          paddingLeft: "25px",
-          //   marginTop: "100px",
-        }}
-      >
-        <div className="row" style={{ fontWeight: "600", color: "grey" }}>
-          {value.line1}
-        </div>
-        <div className="row" style={{ fontWeight: "600", color: "grey" }}>
-          {value.service}
-        </div>
-        <div className="row" style={{ fontWeight: "600", color: "grey" }}>
-          {value.equipment}
-        </div>
-        <div className="row" style={{ fontWeight: "600", color: "grey" }}>
-          {value.line6}
-        </div>
-        <div className="row" style={{ fontWeight: "300", color: "grey" }}>
-          {value.line7}
-        </div>
-        <div className="row" style={{ fontWeight: "300", color: "grey" }}>
-          {value.line8}
-        </div>
-      </div> */}
+      
 
       <div style={{ display: "flex", flexDirection: "column" }}>
         <Typography variant="h6" mr={"60%"}>
@@ -95,9 +86,9 @@ const Step5 = (props) => {
                   ></img>
                 </td>
                 <Typography align="left">
-                  Service ID #1208, Drone ID #1{" "}
+                  Service ID #{bookingData && bookingData.bookingId}, Drone ID #1{" "}
                 </Typography>
-                <Typography align="left">{value.line1}</Typography>
+                <Typography align="left">{bookingData &&  bookingData.brand}</Typography>
                 <tr>
                   <td>
                     <Typography align="right"> </Typography>
@@ -169,7 +160,7 @@ const Step5 = (props) => {
                       }}
                     >
                       {" "}
-                      Rhodes
+                      {bookingData && bookingData.pilotName}
                     </p>
                     <p
                       style={{
@@ -179,7 +170,7 @@ const Step5 = (props) => {
                       }}
                     >
                       {" "}
-                      Lisence Number : #0192389
+                      Lisence Number : {bookingData && bookingData.pilotLicense}
                     </p>
                     <p
                       style={{
@@ -189,7 +180,7 @@ const Step5 = (props) => {
                       }}
                     >
                       {" "}
-                      Phone : 0217878787
+                      Phone : {bookingData && bookingData.phoneNumber}
                     </p>
                     <p
                       style={{
@@ -200,7 +191,7 @@ const Step5 = (props) => {
                       }}
                     >
                       {" "}
-                      Address : alameda, US
+                     
                     </p>
                   </td>
                 </tr>
@@ -222,7 +213,7 @@ const Step5 = (props) => {
               <div className="col-sm columnBill columnBillBold">
                 Drone Base Cost
               </div>
-              <div className="col-sm-2 columnBillsub">20</div>
+              <div className="col-sm-2 columnBillsub">{bookingData && bookingData.droneBaseCost}</div>
               {/* <img src={require("../../Assets/Line.svg").default} /> */}
             </div>
             {/* Drone based cost */}
@@ -251,7 +242,7 @@ const Step5 = (props) => {
             </div>
             <div className="row billtableRow">
               <div className="col-sm columnBill columnBillsub">
-                1x Data Collection - Crop Health
+                1x {bookingData && bookingData.serviceType}
               </div>
               <div className="col-sm-2 columnBillsub">20</div>
               {/* <img src={require("../../Assets/Line.svg").default} /> */}
@@ -268,7 +259,7 @@ const Step5 = (props) => {
             </div>
             <div className="row billtableRow">
               <div className="col-sm columnBill columnBillsub">
-                1 Day - On-Demand
+              {bookingData && bookingData.serviceDuration} Day - On-Demand
               </div>
               <div className="col-sm-2 columnBillsub">20</div>
               {/* <img src={require("../../Assets/Line.svg").default} /> */}
@@ -292,7 +283,7 @@ const Step5 = (props) => {
             </div>
             <div className="row billtableRow">
               <div className="col-sm columnBill columnBillsub">Price</div>
-              <div className="col-sm-2 columnBillsub">20</div>
+              <div className="col-sm-2 columnBillsub">{bookingData && bookingData.totalPrice}</div>
               {/* <img src={require("../../Assets/Line.svg").default} /> */}
             </div>
 
@@ -323,7 +314,7 @@ const Step5 = (props) => {
             </div>
 
             <div className="row billtableRow">
-              <div className="col-sm columnBill columnBillsub">1x Camera </div>
+              <div className="col-sm columnBill columnBillsub">1x {bookingData && bookingData.equipment} </div>
               <div className="col-sm-2 columnBillsub">20</div>
               {/* <img src={require("../../Assets/Line.svg").default} /> */}
             </div>
@@ -342,7 +333,7 @@ const Step5 = (props) => {
               <div className="col-sm columnBill columnBillsub">
                 Drone setup and labor
               </div>
-              <div className="col-sm-2 columnBillsub">20</div>
+              <div className="col-sm-2 columnBillsub">{bookingData && bookingData.pilotCharge}</div>
               {/* <img src={require("../../Assets/Line.svg").default} /> */}
             </div>
 

@@ -62,13 +62,14 @@ function App() {
     }
   }
 
-  const changeLoginStatus=(bool,role)=>{
+  const changeLoginStatus=(bool,role,email)=>{
     setLogin(bool)
     //need to be changed based on the provided parameter
     if(bool && role=="pilot")
     {
+
       var loginjson = {
-        userName: "",
+        userName: email,
         userRole: role,
         isLogged: true,
       };
@@ -78,8 +79,9 @@ function App() {
       navigate("/pilot");
     }
     else if(bool && role=="farmer"){
+      console.log("inside app js role farmer")
       var loginjson = {
-        userName: "",
+        userName: email,
         userRole: role,
         isLogged: true,
       };

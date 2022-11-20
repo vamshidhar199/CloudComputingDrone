@@ -16,51 +16,7 @@ const Step4 = (props) => {
   const farmLand = props.selectedFarmLand;
   return (
     <div>
-      {/* <div
-        className="drone-border"
-        style={{
-          display: "inline-block",
-          marginLeft: "1px",
-          border: "1px solid grey",
-          marginTop: "-1000px",
-          //   float: "middle",
-          //   marginBottom: "1000px",
-        }}
-      >
-        <img
-          src={require("../../Assets/drone.svg").default}
-          //   style={{ border: "1px solid grey" }}
-        />
-      </div>
-      <div
-        className="drone-step4"
-        style={{
-          display: "inline-block",
-          width: "200px",
-          marginRight: "550px",
-          paddingLeft: "25px",
-          //   marginTop: "100px",
-        }}
-      >
-        <div className="row" style={{ fontWeight: "600", color: "grey" }}>
-          {value.line1}
-        </div>
-        <div className="row" style={{ fontWeight: "600", color: "grey" }}>
-          {value.service}
-        </div>
-        <div className="row" style={{ fontWeight: "600", color: "grey" }}>
-          {value.equipment}
-        </div>
-        <div className="row" style={{ fontWeight: "600", color: "grey" }}>
-          {value.line6}
-        </div>
-        <div className="row" style={{ fontWeight: "300", color: "grey" }}>
-          {value.line7}
-        </div>
-        <div className="row" style={{ fontWeight: "300", color: "grey" }}>
-          {value.line8}
-        </div>
-      </div> */}
+     {console.log(new Date(props.dateRange[0])+"inside step 4")}
       <div style={{ display: "flex", flexDirection: "column" }}>
         <Typography variant="h6" mr={"60%"}>
           Summary
@@ -163,7 +119,7 @@ const Step4 = (props) => {
                       }}
                     >
                       {" "}
-                      Rhodes
+                      
                     </p>
                     <p
                       style={{
@@ -173,7 +129,7 @@ const Step4 = (props) => {
                       }}
                     >
                       {" "}
-                      Lisence Number : #0192389
+                      Lisence Number : 
                     </p>
                     <p
                       style={{
@@ -183,7 +139,7 @@ const Step4 = (props) => {
                       }}
                     >
                       {" "}
-                      Phone : 0217878787
+                      Phone : 
                     </p>
                     <p
                       style={{
@@ -194,7 +150,7 @@ const Step4 = (props) => {
                       }}
                     >
                       {" "}
-                      Address : alameda, US
+                      Address : 
                     </p>
                   </td>
                 </tr>

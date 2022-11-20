@@ -1,7 +1,17 @@
-import React, { Component } from "react";
+import React, { Component ,useEffect,useState} from "react";
 import TextField from "@mui/material/TextField";
 import { textAlign } from "@mui/system";
+import axios from "axios";
 function FarmProfile() {
+  const [response,setResponse]=useState();
+  useEffect((props) => {
+    const auth = JSON.parse(localStorage.getItem("auth"));
+      // createData("customer1@gmail.com", "+1 619 234 1235", "San Jose, CA", "Visa ending in 1246", "Not Set ","password") 
+      axios.get('http://localhost:8080/api/auth/getUserDetails/'+auth.loginjson[0].userName+'?role=farmer').then((res)=>{
+        setResponse(res.data)
+        console.log(response)
+      })
+    }, []);
   return (
     <>
       <div className="farmProfilePage container-fluid">
@@ -17,8 +27,8 @@ function FarmProfile() {
               <TextField
                 required
                 id="standard"
-                label="Name"
-                defaultValue=""
+                floatingfloatingLabelTextText="Name"
+                value={response &&(response.username)}
               />
             </div>
             <div className="row innerrow">
@@ -26,8 +36,8 @@ function FarmProfile() {
               <TextField
                 required
                 id="outlined-required"
-                label="Address"
-                defaultValue=""
+                floatingLabelText="Address"
+                value={response &&(response.unit_no+","+response.address)}
               />
             </div>
             <div className="row innerrow">
@@ -35,22 +45,22 @@ function FarmProfile() {
               <TextField
                 required
                 id="outlined-required"
-                label="City"
-                defaultValue=""
+                floatingLabelText="City"
+                value={response &&(response.city)}
               />
             </div>
             <div className="row innerrow">
                 <div className="col-sm"><TextField
                 required
                 id="outlined-required"
-                label="Country"
-                defaultValue=""
+                floatingLabelText="Country"
+                value={response &&(response.state)}
               /></div>
               <div className="col-sm"><TextField
                 required
                 id="outlined-required"
-                label="Zip Code"
-                defaultValue=""
+                floatingLabelText="Zip Code"
+                value={response &&(response.zipcode)}
               /></div>
              
               

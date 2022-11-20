@@ -48,3 +48,10 @@ background: #1A3447;
     border: 1px solid #b0b0b0;
     border-radius: 5px;
 }
+
+.inputDate{
+    padding: 5px;
+    background-color: #e5e5e5;
+    border: 0.5px solid grey;
+    border-radius: 5px;
+}

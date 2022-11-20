@@ -29,9 +29,11 @@ function SignUp(props) {
         document.getElementById("CardCity").value,
         document.getElementById("expiry").value,
         document.getElementById("cvv").value,
-        props.data.email,
-        props.data.phone,
-        props.data.role))
+        document.getElementById("land").value,
+        document.getElementById("DriversLicense").value,
+        
+
+        ))
       }
         else{
           props.sendSignUpToDb(
@@ -40,19 +42,22 @@ function SignUp(props) {
             document.getElementById("City").value,
             document.getElementById("Country").value,
             document.getElementById("ZipCode").value,
-            document.getElementById("LicenseNumber").value,
-            document.getElementById("issuingAuthority").value,
-            document.getElementById("IssuingCity").value,
-            props.data.email,
-            props.data.phone,
-            props.data.role))
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            document.getElementById("DriversLicense").value,
+            
+            ))
           }
       }
 
             
-    function createData(Name, Address, City, Country, ZipCode,CardNumber,Nameaspercard,CardCity,expiry,cvv) {
+    function createData(Name, Address, City, Country, ZipCode,CardNumber,Nameaspercard,CardCity,expiry,cvv,land,DriversLicense) {
        // console.log({ Name, Address, City, Country, ZipCode,CardNumber,Nameaspercard,CardCity,expiry,cvv })
-        return { Name, Address, City, Country, ZipCode,CardNumber,Nameaspercard,CardCity,expiry,cvv };
+        return { Name, Address, City, Country, ZipCode,CardNumber,Nameaspercard,CardCity,expiry,cvv ,land,DriversLicense};
       }
     return <>
     {console.log(props.data)}
@@ -82,6 +87,28 @@ function SignUp(props) {
                 defaultValue=""
               />
             </div>
+            {props.data.role=="Farmer" &&     <div className="row innerrow">
+              {" "}
+              <select style={{backgroundColor:"white"}}
+                      id="land"
+                      select
+                      label="Land Type"
+                      className="roleDropdown"
+                    >
+                      <option key="Crop" value="Crop">
+                      Crop
+                      </option>
+                      <option key="Nursery" value="Nursery">
+                      Nursery
+                      </option>
+                      <option key="Fruit" value="Fruit">
+                      Fruit
+                      </option>
+                      <option key="LiveStock" value="LiveStock">
+                      LiveStock
+                      </option>
+                    </select>
+            </div>}
             <div className="row innerrow">
               {" "}
               <TextField
@@ -104,6 +131,12 @@ function SignUp(props) {
                 label="Zip Code"
                 defaultValue=""
               /></div>
+             {props.data.role=="Farmer" &&  <div className="col-sm"><TextField
+                required
+                id="DriversLicense"
+                label="Drivers License"
+                defaultValue=""
+              /></div>}
              
               
             </div>
@@ -162,7 +195,7 @@ function SignUp(props) {
               {" "}
               <TextField
                 required
-                id="LicenseNumber"
+                id="DriversLicense"
                 label="License Number"
                 defaultValue=""
               />

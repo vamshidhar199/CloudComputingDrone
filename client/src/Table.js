@@ -34,7 +34,7 @@ export default function BasicTable(props) {
           {props.rows.filter((row)=>{
             if(props.search==null)
                 return row;
-            else if(props.search!=null && (row.plot.toLowerCase().includes(props.search.toLowerCase()) || row.type.toLowerCase().includes(props.search.toLowerCase()))){
+            else if(props.search!=null && (row.farmLand.split('$')[0].toLowerCase().includes(props.search.toLowerCase()) || row.serviceType.toLowerCase().includes(props.search.toLowerCase()))){
               return row
             }
             else{
@@ -42,20 +42,20 @@ export default function BasicTable(props) {
             }
           }).map((row) => (
             <TableRow
-              key={row.id}
+              key={row.bookingId}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               onClick={()=>{openBooking(row)}}
               className="spanRowId"
             >
               <TableCell component="th" scope="row">
-                {row.id}
+                {row.bookingId}
               </TableCell>
-              <TableCell align="left">{row.plot}</TableCell>
-              <TableCell align="left">{row.type}</TableCell>
-              <TableCell align="left">{row.service}</TableCell>
-              <TableCell align="left">{row.time}</TableCell>
+              <TableCell align="left">{row.farmLand && row.farmLand.split('$')[0]}</TableCell>
+              <TableCell align="left">{row.farmLand && row.farmLand.split('$')[1]}</TableCell>
+              <TableCell align="left">{row.serviceType}</TableCell>
+              <TableCell align="left">{row.fromDate}</TableCell>
               <TableCell align="left">{
-              row.status=="Active"? <span className='ActiveStatus'>{row.status}</span> : row.status=="Finished" ?<span className='FinishedStatus'>{row.status}</span>:<span className='NotActiveStatus'>{row.status}</span>
+              row.status=="Active"? <span className='ActiveStatus'>{row.status}</span> : row.status=="complete" ?<span className='FinishedStatus'>{row.status}</span>:<span className='NotActiveStatus'>{row.status}</span>
               }</TableCell>
 
             </TableRow>
