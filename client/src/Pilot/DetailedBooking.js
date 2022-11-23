@@ -29,7 +29,7 @@ function DetailedBooking(props) {
   const startServiceCall = (bool) => {
   //   window.open('http://3.90.218.152/flightmonitor/','_blank')
     
-  var nav='/StartService?id='+props.rowId
+  var nav='/StartService?id='+props.row.bookingId
   nav=nav.replace('#','')
   navigate(nav)
 }
@@ -74,7 +74,7 @@ function DetailedBooking(props) {
           }}
         >
           <div className="col-sm headingDetails">
-            <h3 style={{ float: "left" }}>Service {props.rowId}</h3>
+            <h3 style={{ float: "left" }}>Service {props.row.bookingId}</h3>
           </div>
         </div>
 
@@ -116,10 +116,10 @@ function DetailedBooking(props) {
 
             <div className="col-sm-4" style={{ float: "left" }}>
               <div className="row" style={{ fontWeight: "600", color: "grey" }}>
-                DJ Mini{" "}
+                Drone Name : {props.row.brand}
               </div>
               <div className="row" style={{ fontWeight: "600", color: "grey" }}>
-                {props.rowId}
+                Drone Id : {props.row.bookingId}
               </div>
               <div className="row" style={{ fontWeight: "600", color: "grey" }}>
                 Location{" "}
@@ -142,31 +142,31 @@ function DetailedBooking(props) {
             </div>
             <div className="col-sm-4" style={{ float: "left" }}>
               <div className="row" style={{ fontWeight: "600", color: "grey" }}>
-                Drone Polot{" "}
+                Drone Pilot{" "}
               </div>
               <div className="row" style={{ fontWeight: "600", color: "grey" }}>
-                Ron Mayer{" "}
+                {props.row.pilotName}
               </div>
               <div className="row" style={{ fontWeight: "600", color: "grey" }}>
-                San Jose{" "}
+                {props.row.pilotLicense}
               </div>
               <div className="row" style={{ fontWeight: "300", color: "grey" }}>
                 360 South Market Street{" "}
               </div>
               <div className="row" style={{ fontWeight: "300", color: "grey" }}>
-                Licence : 128945{" "}
+               
               </div>
             </div>
           </div>
           <div className="row billTable">
             <div className="col-sm-4">
               <div className="row buttonRow">
-                <button className="buttonPayment"  disabled={props.row.status=="Complete"?true:false} onClick={() => startServiceCall(true)}  >
+                <button className="buttonPayment"  disabled={props.row.status!="available"?true:false} onClick={() => startServiceCall(true)}  >
                   Start service
                 </button>
               </div>
               <div className="row buttonRow">
-                <button className="buttonPayment" disabled={props.row.status=="Complete"?true:false} onClick={()=> markCompleted()} >
+                <button className="buttonPayment" disabled={props.row.status!="available"?true:false} onClick={()=> markCompleted()} >
                   Mark as completed
                 </button>
               </div>
@@ -191,21 +191,21 @@ function DetailedBooking(props) {
               <div className="col-sm columnBill columnBillsub">
                 Service Id
               </div>
-              <div className="col-sm-2 columnBillsub">{props.rowId}</div>
+              <div className="col-sm-2 columnBillsub">{props.row.bookingId}</div>
               {/* <img src={require("./../Assets/Line.svg").default}  style={{paddingTop:"5px"}}/> */}
             </div>
             <div className="row billtableRow">
               <div className="col-sm columnBill columnBillsub">
                 Duration
               </div>
-              <div className="col-sm-2 columnBillsub">2 Hrs</div>
+              <div className="col-sm-2 columnBillsub">{props.row.serviceDuration} Days</div>
               {/* <img src={require("./../Assets/Line.svg").default} /> */}
             </div>
             <div className="row billtableRow">
               <div className="col-sm columnBill columnBillsub">
-                Location
+                Farm Land 
               </div>
-              <div className="col-sm-2 columnBillsub">367 Old Toll Road, Mariposa, CA</div>
+              <div className="col-sm-2 columnBillsub">{props.row.farmLand}</div>
               {/* <img src={require("./../Assets/Line.svg").default} /> */}
             </div>
             

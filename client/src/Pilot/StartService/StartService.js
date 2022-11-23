@@ -19,14 +19,14 @@ import axios from 'axios';
 
 function StartService(props) {
     const [open, setOpen] = useState(false);
-    const ip="54.197.113.104"
+    const ip="52.90.249.224"
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   const [alertMessage,setAlertMessage]=useState();
   const [showAlert,setShowAlert]=useState(false);
-  
+  const [role,setRole]=useState();
   const markCompleted=()=>{
    //api call
     setAlertMessage("Succesfully marked as complete");
@@ -36,6 +36,8 @@ function StartService(props) {
     }, 2000);
   }
   useEffect(() => {
+    const auth = JSON.parse(localStorage.getItem("auth"));
+    setRole(auth.loginjson[0].userRole);
     axios.get("http://"+ip+"/flight_data_collect/connect/14550/").then((res) => {
       console.log(res);
     });
@@ -136,7 +138,7 @@ function StartService(props) {
 
 
       <div className="row">
-        <div className="col-sm-2">
+       { role=="pilot" && <div className="col-sm-2">
         <div className="row buttonRow">
                 <button className="buttonPayment" style={{height:"100px"}} onClick={()=>markCompleted()}>
                   Mark as completed
@@ -157,7 +159,7 @@ function StartService(props) {
                   view service details
                 </button>
               </div>
-            </div>
+            </div>}
         
         <div className="col-sm" style={{marginRight:"-90px",marginLeft:"-20px"}}>
           {/* <iframe is="x-frame-bypass" src="http://ec2-52-203-10-77.compute-1.amazonaws.com/flightmonitor/"></iframe> */}

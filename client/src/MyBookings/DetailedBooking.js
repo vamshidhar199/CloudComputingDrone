@@ -21,6 +21,13 @@ function DetailedBooking(props) {
   
     // });
   }
+  const startServiceCall = (bool) => {
+    //   window.open('http://3.90.218.152/flightmonitor/','_blank')
+      
+    var nav='/StartService?id='+props.row.bookingId
+    nav=nav.replace('#','')
+    navigate(nav)
+  }
   const [currBookingDetails,setCurrBookingDetails]=useState();
   useEffect(()=>{
     axios.get('http://localhost:8080/agriDrone/getBooking/'+props.row.bookingId).then((res)=>{
@@ -279,7 +286,7 @@ function DetailedBooking(props) {
           </div>
         ) : (
           <div className="row buttonRow">
-            <button className="buttonPayment" onClick={()=>test()}>Make Payment</button>
+            <button className="buttonPayment" onClick={()=>startServiceCall(true)}>Simulation</button>
           </div>
         )}
       </div>
