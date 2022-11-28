@@ -150,15 +150,15 @@ const droneData = [
     "300"
   ),
   createData(
-    "DJI Mini SE",
+    "DJI Mini SE 2",
     "Data Collection",
-    "ID #1001",
+    "ID #1002",
     "3-Axis Gimbal",
     "2.7k Thermal Camera",
     "30 Min Flight Time",
-    "8 m/s Flight Speed",
+    "10 m/s Flight Speed",
     "249 grams",
-    "80"
+    "90"
   ),
   createData(
     "DJI Mini SE",
@@ -323,6 +323,7 @@ const DroneCatelog = (props) => {
                 label={<b className="dateclass">Date</b>}
                 className="datepickerclass"
                 value={value}
+                minDate={new Date()}
                 onChange={(newValue) => {
                   setValue(newValue);
                 }}

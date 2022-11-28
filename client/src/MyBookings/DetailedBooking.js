@@ -5,10 +5,13 @@ import profileImage from "./../Assets/profile1.png";
 import { Button } from  '@progress/kendo-react-buttons';
 import { PDFExport, savePDF } from  '@progress/kendo-react-pdf';
 import axios from 'axios';
+import moment from "moment";
 
 function DetailedBooking(props) {
   const navigate = useNavigate();
   const pdfExportComponent = useRef(null);
+  const [date,setDate]=useState();
+  // let date=null;
   const test=()=>{
     // axios.post("http://ec2-52-203-10-77.compute-1.amazonaws.com/flight_data_collect/register-drone/ ",{
     //   device_id: 14559,
@@ -32,6 +35,10 @@ function DetailedBooking(props) {
   useEffect(()=>{
     axios.get('http://localhost:8080/agriDrone/getBooking/'+props.row.bookingId).then((res)=>{
       setCurrBookingDetails(res.data)
+      //date=res.data.fromDate;
+      setDate(res.data[0].fromDate);
+      console.log("date from booking"+date)
+      console.log(moment(new Date()).isSame(res.data[0].fromDate, "day"))
     })
   },[])
 
@@ -270,7 +277,7 @@ function DetailedBooking(props) {
             {/* Pilot Charge */}
           </div>
         </div>
-        {props.row.status == "complete" ? (
+        {props.row.status == "completed" ? (
           <div className="row buttonRow">
             <button
               className="buttonPayment"
@@ -286,7 +293,7 @@ function DetailedBooking(props) {
           </div>
         ) : (
           <div className="row buttonRow">
-            <button className="buttonPayment" onClick={()=>startServiceCall(true)}>Simulation</button>
+           {moment(new Date()).isSame(date, "day") ? <button className="buttonPayment" onClick={()=>startServiceCall(true)}>Simulation</button>:""}
           </div>
         )}
       </div>

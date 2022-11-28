@@ -24,7 +24,12 @@ function DetailedServiceReport(props) {
 
 
   useEffect(() => {
-    axios.get('http://localhost:8080/agriDrone/getBooking/'+props.row.bookingId).then((res)=>{
+    let rowid=props.row.bookingId;
+    if(searchParams.get("rowid")){
+      rowid=searchParams.get("rowid")
+    }
+    
+    axios.get('http://localhost:8080/agriDrone/getBooking/'+rowid).then((res)=>{
       setCurrBookingDetails(res.data)
     })
     setUrlId(searchParams.get("rowid"))
@@ -135,7 +140,7 @@ function DetailedServiceReport(props) {
             <div className="row SignatureRow">
               <div className="col-sm-8"><h5 className="SignatureHead">Pilot Signature</h5></div>
               {/* <div className="col-sm-4"><button className="SignatureText SignatureButton" onClick={()=>{}}>Sign</button></div> */}
-              <h6 className="SignatureText">{pilotSign ==true ? "Signed" :"Not Signed"}</h6>
+              <h6 className="SignatureText">Signed</h6>
             </div>
           </div>
           <div className="col-sm">

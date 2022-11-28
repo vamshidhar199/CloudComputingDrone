@@ -17,10 +17,10 @@ function Home() {
         <div className="col-sm-3"></div>
         <div className="col-sm-4 chips">
           <div className="row chips-row">
-            <Chips title={"Upcoming Service"} date={"29/12/2022"} serviceType={"Data Collection"}/>
+            <Chips title={"Upcoming Service"} date={"9/12/2022"} serviceType={"Data Collection"}/>
           </div>
           <div className="row">
-            <Chips title={"Completed Service"} date={"29/10/2022"} serviceType={"Data Collection"}/>
+            <Chips title={"Completed Service"} date={"12/12/2022"} serviceType={"Data Collection"}/>
           </div>
         </div>
       </div>

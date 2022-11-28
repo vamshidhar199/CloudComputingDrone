@@ -4,8 +4,26 @@ import Card from '@mui/joy/Card';
 import CardCover from '@mui/joy/CardCover';
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
+import axios from 'axios';
 
 export default function Cards() {
+  const [overview,setOverview]=React.useState();
+  React.useEffect(()=>{
+  const auth = JSON.parse(localStorage.getItem("auth"));
+  const url='http://localhost:8080/agriDrone/getAllPilotBookings/'+auth.loginjson[0].userName;
+  axios.get(url).then((res)=>{
+    let active=0;
+    let total=0;
+    res.data.map((x)=>{
+      total++;
+      if(x.status=="active"){
+        active=active+1;
+      }
+    })
+    setOverview({total:total,active:active});
+  })
+},[])
+
   return (<>
     <Box
       component="ul"
@@ -56,7 +74,7 @@ export default function Cards() {
             
             fontSize="30px"
           >
-            Total Bookings <br></br> 10
+            Total Bookings <br></br>{overview && overview.total}
           </Typography>
         </CardContent>
       </Card>
@@ -79,7 +97,7 @@ export default function Cards() {
             
             fontSize="30px"
           >
-            Active  <br></br> 1
+            Active  <br></br>{overview && overview.active}
           </Typography>
         </CardContent>
       </Card>
@@ -100,7 +118,7 @@ export default function Cards() {
             
             fontSize="30px"
           >
-            Completed  <br></br> 9
+            Completed  <br></br> {overview && (overview.total-overview.active)}
           </Typography>
         </CardContent>
       </Card>

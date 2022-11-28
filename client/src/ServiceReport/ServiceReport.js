@@ -23,7 +23,7 @@ function ServiceReport() {
         const auth = JSON.parse(localStorage.getItem("auth"));
         const url='http://localhost:8080/agriDrone/getAllFarmerBookings/'+auth.loginjson[0].userName
         axios.get(url).then((res)=>{
-            const data=res.data.filter(x=>{if(x.status=="complete") return x;})
+            const data=res.data.filter(x=>{if(x.status=="completed") return x;})
             setBookingData(data);
             setShowSpinner(false);
         })

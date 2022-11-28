@@ -59,14 +59,14 @@ function Sidebar(props) {
                 <img src={require('./../Assets/arrow.svg').default} alt='mySvgImage' />
                 </span>
 
-                <span className={tab=="simulation"?'span-li span-li-colored':'span-li '} id="simulation" onClick={()=>{changeColor("simulation")}}>
+                {/* <span className={tab=="simulation"?'span-li span-li-colored':'span-li '} id="simulation" onClick={()=>{changeColor("simulation")}}>
 
                 <li className='li-dashboard'><img src={require('./../Assets/maintain.svg').default} alt='mySvgImage' />
                     <span className='li-span'><Link class="nav-link" to="/simulation">Simulation Management</Link></span>
 
                 </li>
                 <img src={require('./../Assets/arrow.svg').default} alt='mySvgImage' />
-                </span>
+                </span> */}
                 <span className='span-li'>
 
                 <li className='li-dashboard'><img src={require('./../Assets/maintain.svg').default} alt='mySvgImage' />

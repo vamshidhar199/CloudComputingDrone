@@ -19,7 +19,8 @@ function PilotBookings() {
         const auth = JSON.parse(localStorage.getItem("auth"));
         const url='http://localhost:8080/agriDrone/getAllPilotBookings/'+auth.loginjson[0].userName
         axios.get(url).then((res)=>{
-            setBookingData(res.data);
+          const data=res.data.filter(x=>{if(x.status=="active") return x;})
+            setBookingData(data);
             setShowSpinner(false);
         })
       },[])

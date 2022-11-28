@@ -80,6 +80,7 @@ const SelectedDroneDetails = (props) => {
   moveRangeOnFirstSelection={false}
   months={1}
   ranges={state}
+  minDate={new Date()}
   direction="horizontal"
 />;
         </LocalizationProvider>

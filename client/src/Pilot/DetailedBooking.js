@@ -19,6 +19,11 @@ function DetailedBooking(props) {
   const [showAlert,setShowAlert]=useState(false);
   const markCompleted = ()=>{
     //api call
+    axios.patch('http://localhost:8080/agriDrone/updateStatus',{
+    bookingId:props.row.bookingId,
+    status:"completed"
+
+    })
      setAlertMessage("Succesfully marked as complete");
      setShowAlert(true);
      setTimeout(() => {
@@ -161,12 +166,12 @@ function DetailedBooking(props) {
           <div className="row billTable">
             <div className="col-sm-4">
               <div className="row buttonRow">
-                <button className="buttonPayment"  disabled={props.row.status!="available"?true:false} onClick={() => startServiceCall(true)}  >
+                <button className="buttonPayment"  disabled={props.row.status!="active"?true:false} onClick={() => startServiceCall(true)}  >
                   Start service
                 </button>
               </div>
               <div className="row buttonRow">
-                <button className="buttonPayment" disabled={props.row.status!="available"?true:false} onClick={()=> markCompleted()} >
+                <button className="buttonPayment" disabled={props.row.status!="active"?true:false} onClick={()=> markCompleted()} >
                   Mark as completed
                 </button>
               </div>

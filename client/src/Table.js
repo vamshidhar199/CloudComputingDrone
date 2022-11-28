@@ -55,7 +55,7 @@ export default function BasicTable(props) {
               <TableCell align="left">{row.serviceType}</TableCell>
               <TableCell align="left">{row.fromDate}</TableCell>
               <TableCell align="left">{
-              row.status=="Active"? <span className='ActiveStatus'>{row.status}</span> : row.status=="complete" ?<span className='FinishedStatus'>{row.status}</span>:<span className='NotActiveStatus'>{row.status}</span>
+              row.status=="Active"? <span className='ActiveStatus'>{row.status}</span> : row.status=="completed" ?<span className='FinishedStatus'>{row.status}</span>:<span className='NotActiveStatus'>{row.status}</span>
               }</TableCell>
 
             </TableRow>
