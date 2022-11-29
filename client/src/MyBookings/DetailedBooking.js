@@ -10,7 +10,7 @@ import moment from "moment";
 function DetailedBooking(props) {
   const navigate = useNavigate();
   const pdfExportComponent = useRef(null);
-  const [date,setDate]=useState();
+  const [date,setDate]=useState(null);
   // let date=null;
   const test=()=>{
     // axios.post("http://ec2-52-203-10-77.compute-1.amazonaws.com/flight_data_collect/register-drone/ ",{
@@ -36,9 +36,9 @@ function DetailedBooking(props) {
     axios.get('http://localhost:8080/agriDrone/getBooking/'+props.row.bookingId).then((res)=>{
       setCurrBookingDetails(res.data)
       //date=res.data.fromDate;
-      setDate(res.data[0].fromDate);
+      setDate(res.data.fromDate);
       console.log("date from booking"+date)
-      console.log(moment(new Date()).isSame(res.data[0].fromDate, "day"))
+      console.log(moment(new Date()).isSame(res.data.fromDate, "day"))
     })
   },[])
 
@@ -150,7 +150,7 @@ function DetailedBooking(props) {
               <div className="col-sm columnBill columnBillBold">
                 Drone Base Cost
               </div>
-              <div className="col-sm-2 columnBillsub">{currBookingDetails && currBookingDetails[0].droneBaseCost}</div>
+              <div className="col-sm-2 columnBillsub">{ }</div>
               {/* <img src={require("./../Assets/Line.svg").default} /> */}
             </div>
             {/* Drone based cost */}
@@ -196,7 +196,7 @@ function DetailedBooking(props) {
             </div>
             <div className="row billtableRow">
               <div className="col-sm columnBill columnBillsub">
-              {currBookingDetails && currBookingDetails[0].serviceDuration} Day - On-Demand
+              {currBookingDetails && currBookingDetails.serviceDuration} Day - On-Demand
               </div>
               <div className="col-sm-2 columnBillsub">20</div>
               {/* <img src={require("./../Assets/Line.svg").default} /> */}
@@ -220,7 +220,7 @@ function DetailedBooking(props) {
             </div>
             <div className="row billtableRow">
               <div className="col-sm columnBill columnBillsub">Price</div>
-              <div className="col-sm-2 columnBillsub">{currBookingDetails && currBookingDetails[0].totalPrice}</div>
+              <div className="col-sm-2 columnBillsub">{currBookingDetails && currBookingDetails.totalPrice}</div>
               {/* <img src={require("./../Assets/Line.svg").default} /> */}
             </div>
 
@@ -251,8 +251,8 @@ function DetailedBooking(props) {
             </div>
 
             <div className="row billtableRow">
-              <div className="col-sm columnBill columnBillsub">1x {currBookingDetails && currBookingDetails[0].equipment} </div>
-              <div className="col-sm-2 columnBillsub">{currBookingDetails && currBookingDetails[0].equipmentCost}</div>
+              <div className="col-sm columnBill columnBillsub">1x {currBookingDetails && currBookingDetails.equipment} </div>
+              <div className="col-sm-2 columnBillsub">{currBookingDetails && currBookingDetails.equipmentCost}</div>
               {/* <img src={require("./../Assets/Line.svg").default} /> */}
             </div>
 
@@ -270,7 +270,7 @@ function DetailedBooking(props) {
               <div className="col-sm columnBill columnBillsub">
                 Drone setup and labor
               </div>
-              <div className="col-sm-2 columnBillsub">{currBookingDetails && currBookingDetails[0].pilotCharge}</div>
+              <div className="col-sm-2 columnBillsub">{currBookingDetails && currBookingDetails.pilotCharge}</div>
               {/* <img src={require("./../Assets/Line.svg").default} /> */}
             </div>
 

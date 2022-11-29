@@ -70,21 +70,21 @@ function DetailedServiceReport(props) {
               <div className="col-sm columnBill columnBillsub">
                 Pilot Id
               </div>
-              <div className="col-sm-4 columnBillsub">{currBookingDetails && currBookingDetails[0].pilotLicense}</div>
+              <div className="col-sm-4 columnBillsub">{currBookingDetails && currBookingDetails.pilotLicense}</div>
               {/* <img src={require("./../Assets/Line.svg").default}  style={{paddingTop:"5px"}}/> */}
             </div>
             <div className="row billtableRow">
               <div className="col-sm columnBill columnBillsub">
                 Contact
               </div>
-              <div className="col-sm-4 columnBillsub">{currBookingDetails && currBookingDetails[0].phoneNumber}</div>
+              <div className="col-sm-4 columnBillsub">{currBookingDetails && currBookingDetails.phoneNumber}</div>
               {/* <img src={require("./../Assets/Line.svg").default} /> */}
             </div>
             <div className="row billtableRow">
               <div className="col-sm columnBill columnBillsub">
                 Location
               </div>
-              <div className="col-sm-4 columnBillsub">{currBookingDetails && currBookingDetails[0].farmLand.split('$')[0]}</div>
+              <div className="col-sm-4 columnBillsub">{currBookingDetails && currBookingDetails.farmLand.split('$')[0]}</div>
               {/* <img src={require("./../Assets/Line.svg").default} /> */}
             </div>
             <div className="row billtableRow">
@@ -113,22 +113,22 @@ function DetailedServiceReport(props) {
               <h4>Service Details : </h4>
             </div>
             <div className="row serviceText">
-              <h6>Service ID {currBookingDetails && currBookingDetails[0].bookingId}</h6>
+              <h6>Service ID {currBookingDetails && currBookingDetails.bookingId}</h6>
             </div>
             <div className="row serviceText">
-              <h6>Status : {currBookingDetails && currBookingDetails[0].status}</h6>
+              <h6>Status : {currBookingDetails && currBookingDetails.status}</h6>
             </div>
             <div className="row serviceText">
-              <h6>Service Details :{currBookingDetails && currBookingDetails[0].serviceType}</h6>
+              <h6>Service Details :{currBookingDetails && currBookingDetails.serviceType}</h6>
             </div>
             <div className="row serviceText">
-              <h6>Time :{currBookingDetails && currBookingDetails[0].fromDate} to {currBookingDetails && currBookingDetails[0].toDate}</h6>
+              <h6>Time :{currBookingDetails && currBookingDetails.fromDate} to {currBookingDetails && currBookingDetails.toDate}</h6>
             </div>
             <div className="row serviceText">
-              <h6>Land :{currBookingDetails && currBookingDetails[0].farmLand.replace('$',', ')}</h6>
+              <h6>Land :{currBookingDetails && currBookingDetails.farmLand.replace('$',', ')}</h6>
             </div>
             <div className="row serviceText">
-              <h6>Price :{currBookingDetails && currBookingDetails[0].totalPrice}</h6>
+              <h6>Price :{currBookingDetails && currBookingDetails.totalPrice}</h6>
             </div>
           </div>
           <div className="col-sm"> 
@@ -149,19 +149,19 @@ function DetailedServiceReport(props) {
           </div>
         </div>
         <div className="row imageRow">
-            <div className="col-sm"><TitlebarImageList time={currBookingDetails && currBookingDetails[0].fromDate}/></div>
+            <div className="col-sm"><TitlebarImageList time={currBookingDetails && currBookingDetails.fromDate}/></div>
             <div className="col-sm pilot-div">
                 <div className="row">
                     <h3>Pilot details</h3>
                 </div>
                 <div className="row">
-                    <h6>Pilot Name : {currBookingDetails && currBookingDetails[0].pilotName}</h6>
+                    <h6>Pilot Name : {currBookingDetails && currBookingDetails.pilotName}</h6>
                 </div>
                 <div className="row">
-                    <h6>Pilot ID :{currBookingDetails && currBookingDetails[0].pilotLicense}</h6>
+                    <h6>Pilot ID :{currBookingDetails && currBookingDetails.pilotLicense}</h6>
                 </div>
                 <div className="row">
-                    <h6>Contact : {currBookingDetails && currBookingDetails[0].phoneNumber}</h6>
+                    <h6>Contact : {currBookingDetails && currBookingDetails.phoneNumber}</h6>
                 </div>
 
                 <div className="row button-div">

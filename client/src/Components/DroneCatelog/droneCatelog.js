@@ -1,20 +1,23 @@
 import { Box } from "@mui/system";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Autocomplete, TextField, Typography } from "@mui/material";
 import SelectedDroneDetails from "../DroneDetailed/droneDetailed";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import SearchIcon from "@mui/icons-material/Search";
+import * as moment from 'moment';
+
 // import { Dayjs } from "dayjs";
 // import TextField from "@mui/material/TextField";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import "../../MyBookings/DetailedBooking.css";
+import axios from "axios";
 // import "./droneCatelog.css";
 
-const createData = (a, b, c, d, e, f, g, h, i) => {
+const createData = (a, b, c, d, e, f, g, h, i,date) => {
   return {
     line1: a,
     service: b,
@@ -25,164 +28,167 @@ const createData = (a, b, c, d, e, f, g, h, i) => {
     line7: g,
     line8: h,
     price: i,
+    date:date,
   };
 };
-const droneData = [
-  createData(
-    "DJI Mini SE",
-    "Data Collection",
-    "ID #1001",
-    "3-Axis Gimbal",
-    "2.7k Camera",
-    "30 Min Flight Time",
-    "8 m/s Flight Speed",
-    "249 grams",
-    "80"
-  ),
-  createData(
-    "DJI Phantom Pro 4",
-    "Surveillance",
-    "ID #1001",
-    "3-Axis Gimbal",
-    "4k Camera",
-    "30 Min Flight Time",
-    "13 m/s Flight Speed",
-    "1375 grams",
-    "100"
-  ),
-  createData(
-    "DJI ",
-    "Surveillance",
-    "ID #1001",
-    "3-Axis Gimbal",
-    "2.7k LiDAR",
-    "30 Min Flight Time",
-    "8 m/s Flight Speed",
-    "249 grams",
-    "120"
-  ),
-  createData(
-    "DJI Mini SE",
-    "Surveillance",
-    "ID #1001",
-    "3-Axis Gimbal",
-    "2.7k LiDAR",
-    "30 Min Flight Time",
-    "8 m/s Flight Speed",
-    "249 grams",
-    "200"
-  ),
-  createData(
-    "DJI Matrice 300 RTK Surveillance",
-    "Surveillance",
-    "ID #1001",
-    "3-Axis Gimbal",
-    "960p Camera",
-    "55 Min Flight Time",
-    "17 m/s Flight Speed",
-    "9 grams",
-    "300"
-  ),
-  createData(
-    "DJI Mini SE",
-    "Payload",
-    "ID #1001",
-    "3-Axis Gimbal",
-    "2.7k LiDAR",
-    "30 Min Flight Time",
-    "8 m/s Flight Speed",
-    "249 grams",
-    "120"
-  ),
-  createData(
-    "DJI Mini SE",
-    "Data Collection",
-    "ID #1001",
-    "3-Axis Gimbal",
-    "2.7k Camera",
-    "30 Min Flight Time",
-    "8 m/s Flight Speed",
-    "249 grams",
-    "200"
-  ),
-  createData(
-    "DJI Mini SE",
-    "Surveillance",
-    "ID #1001",
-    "3-Axis Gimbal",
-    "2.7k Camera",
-    "30 Min Flight Time",
-    "8 m/s Flight Speed",
-    "249 grams",
-    "300"
-  ),
-  createData(
-    "DJI Mini SE",
-    "Surveillance",
-    "ID #1001",
-    "3-Axis Gimbal",
-    "2.7k Camera",
-    "30 Min Flight Time",
-    "8 m/s Flight Speed",
-    "249 grams",
-    "120"
-  ),
-  createData(
-    "DJI Mini SE",
-    "Payload",
-    "ID #1001",
-    "3-Axis Gimbal",
-    "2.7k Thermal Camera",
-    "30 Min Flight Time",
-    "8 m/s Flight Speed",
-    "249 grams",
-    "200"
-  ),
-  createData(
-    "DJI Mini SE",
-    "Payload",
-    "ID #1001",
-    "3-Axis Gimbal",
-    "2.7k Camera",
-    "30 Min Flight Time",
-    "8 m/s Flight Speed",
-    "249 grams",
-    "300"
-  ),
-  createData(
-    "DJI Mini SE 2",
-    "Data Collection",
-    "ID #1002",
-    "3-Axis Gimbal",
-    "2.7k Thermal Camera",
-    "30 Min Flight Time",
-    "10 m/s Flight Speed",
-    "249 grams",
-    "90"
-  ),
-  createData(
-    "DJI Mini SE",
-    "Payload",
-    "ID #1001",
-    "3-Axis Gimbal",
-    "2.7k LiDAR",
-    "30 Min Flight Time",
-    "8 m/s Flight Speed",
-    "249 grams",
-    "120"
-  ),
-  createData(
-    "DJI Mini SE",
-    "Surveillance",
-    "ID #1001",
-    "3-Axis Gimbal",
-    "2.7k Camera",
-    "30 Min Flight Time",
-    "8 m/s Flight Speed",
-    "249 grams",
-    "200"
-  ),
-];
+let droneData = []
+
+
+  // createData(
+  //   "DJI Mini SE",
+  //   "Data Collection",
+  //   "ID #1001",
+  //   "3-Axis Gimbal",
+  //   "2.7k Camera",
+  //   "30 Min Flight Time",
+  //   "8 m/s Flight Speed",
+  //   "249 grams",
+  //   "80"
+  // ),
+  // createData(
+  //   "DJI Phantom Pro 4",
+  //   "Surveillance",
+  //   "ID #1001",
+  //   "3-Axis Gimbal",
+  //   "4k Camera",
+  //   "30 Min Flight Time",
+  //   "13 m/s Flight Speed",
+  //   "1375 grams",
+  //   "100"
+  // ),
+  // createData(
+  //   "DJI ",
+  //   "Surveillance",
+  //   "ID #1001",
+  //   "3-Axis Gimbal",
+  //   "2.7k LiDAR",
+  //   "30 Min Flight Time",
+  //   "8 m/s Flight Speed",
+  //   "249 grams",
+  //   "120"
+  // ),
+  // createData(
+  //   "DJI Mini SE",
+  //   "Surveillance",
+  //   "ID #1001",
+  //   "3-Axis Gimbal",
+  //   "2.7k LiDAR",
+  //   "30 Min Flight Time",
+  //   "8 m/s Flight Speed",
+  //   "249 grams",
+  //   "200"
+  // ),
+  // createData(
+  //   "DJI Matrice 300 RTK Surveillance",
+  //   "Surveillance",
+  //   "ID #1001",
+  //   "3-Axis Gimbal",
+  //   "960p Camera",
+  //   "55 Min Flight Time",
+  //   "17 m/s Flight Speed",
+  //   "9 grams",
+  //   "300"
+  // ),
+  // createData(
+  //   "DJI Mini SE",
+  //   "Payload",
+  //   "ID #1001",
+  //   "3-Axis Gimbal",
+  //   "2.7k LiDAR",
+  //   "30 Min Flight Time",
+  //   "8 m/s Flight Speed",
+  //   "249 grams",
+  //   "120"
+  // ),
+  // createData(
+  //   "DJI Mini SE",
+  //   "Data Collection",
+  //   "ID #1001",
+  //   "3-Axis Gimbal",
+  //   "2.7k Camera",
+  //   "30 Min Flight Time",
+  //   "8 m/s Flight Speed",
+  //   "249 grams",
+  //   "200"
+  // ),
+  // createData(
+  //   "DJI Mini SE",
+  //   "Surveillance",
+  //   "ID #1001",
+  //   "3-Axis Gimbal",
+  //   "2.7k Camera",
+  //   "30 Min Flight Time",
+  //   "8 m/s Flight Speed",
+  //   "249 grams",
+  //   "300"
+  // ),
+  // createData(
+  //   "DJI Mini SE",
+  //   "Surveillance",
+  //   "ID #1001",
+  //   "3-Axis Gimbal",
+  //   "2.7k Camera",
+  //   "30 Min Flight Time",
+  //   "8 m/s Flight Speed",
+  //   "249 grams",
+  //   "120"
+  // ),
+  // createData(
+  //   "DJI Mini SE",
+  //   "Payload",
+  //   "ID #1001",
+  //   "3-Axis Gimbal",
+  //   "2.7k Thermal Camera",
+  //   "30 Min Flight Time",
+  //   "8 m/s Flight Speed",
+  //   "249 grams",
+  //   "200"
+  // ),
+  // createData(
+  //   "DJI Mini SE",
+  //   "Payload",
+  //   "ID #1001",
+  //   "3-Axis Gimbal",
+  //   "2.7k Camera",
+  //   "30 Min Flight Time",
+  //   "8 m/s Flight Speed",
+  //   "249 grams",
+  //   "300"
+  // ),
+  // createData(
+  //   "DJI Mini SE 2",
+  //   "Data Collection",
+  //   "ID #1002",
+  //   "3-Axis Gimbal",
+  //   "2.7k Thermal Camera",
+  //   "30 Min Flight Time",
+  //   "10 m/s Flight Speed",
+  //   "249 grams",
+  //   "90"
+  // ),
+  // createData(
+  //   "DJI Mini SE",
+  //   "Payload",
+  //   "ID #1001",
+  //   "3-Axis Gimbal",
+  //   "2.7k LiDAR",
+  //   "30 Min Flight Time",
+  //   "8 m/s Flight Speed",
+  //   "249 grams",
+  //   "120"
+  // ),
+  // createData(
+  //   "DJI Mini SE",
+  //   "Surveillance",
+  //   "ID #1001",
+  //   "3-Axis Gimbal",
+  //   "2.7k Camera",
+  //   "30 Min Flight Time",
+  //   "8 m/s Flight Speed",
+  //   "249 grams",
+  //   "200"
+  // ),
+// ];
 
 const selectValues = [
   {
@@ -207,7 +213,18 @@ const selectValues = [
   },
 ];
 
-const DroneCatelog = (props) => {
+function DroneCatelog(props) {
+  useEffect(()=>{
+
+    axios.get('http://localhost:8080/agriDrone/getDroneDetails').then(
+      (res)=>{
+        res.data.map(x=>{
+          droneData.push(createData(x.brand,x.serviceType,x.serviceId,"3-Axis Gimbal",x.equipment,Math.floor(Math.random() * 11)+"Hrs Flight Time",
+          Math.floor(Math.random() * 10)+" m/s Flight Speed","21"+Math.floor(Math.random() * 10)+" grams",x.price,x.fromDate))
+        })
+      }
+    )
+  },[])
   console.log("selectedFarmLand from drone catelog", props.selectedFarmLand);
   const [value, setValue] = React.useState(null);
   const [noOfFieldsFilled, setnoOfFieldsFilled] = React.useState(0);
@@ -223,7 +240,8 @@ const DroneCatelog = (props) => {
     const equipment = document.getElementById("Equipment").value;
     const brand = document.getElementById("Brand").value;
     const status = document.getElementById("Status").value;
-    console.log(service, price, equipment, brand, status);
+    const selectedDate=value;
+    console.log(moment(selectedDate.$d).format('l'));
     if (service) values += 1;
     if (price) values += 1;
     if (equipment) values += 1;
@@ -237,17 +255,26 @@ const DroneCatelog = (props) => {
 
     price = price.split("< $")[1];
     const x = droneData.filter((drone) => {
-      if (drone.service === service && drone.price <= price - 1) {
-        if (drone.equipment.split(" ").includes(equipment)) return true;
-        if (
-          equipment === "Thermal Camera" &&
-          drone.equipment.split(" ").includes("Thermal") &&
-          drone.equipment.split(" ").includes("Camera")
-        ) {
-          return true;
-        }
-      }
-      return false;
+      console.log(drone.price +"---"+drone.service)
+      console.log()
+      // if (drone.service === service.toLowerCase() && drone.price <= price - 1) {
+      //   if (drone.equipment.toLowerCase().split(" ").includes(equipment.toLowerCase())) return true;
+      //   if (
+      //     equipment === "Thermal Camera" &&
+      //     drone.equipment.split(" ").includes("Thermal") &&
+      //     drone.equipment.split(" ").includes("Camera")
+      //   ) {
+      //     return true;
+      //   }
+      // }
+      const d1=moment(selectedDate.$d).format('l')
+      const d2=moment(drone.date).format('l')
+      console.log(moment(d1).isSame(moment(d2)));
+      console.log(drone.service.toLowerCase()+"--service--"+service.toLowerCase())
+      if(drone.service.toLowerCase()===service.toLowerCase() && drone.price<=Number(price) && drone.line1.split(" ")[0]===(brand) && (drone.equipment.toLowerCase().includes(equipment.toLowerCase()) || equipment.toLowerCase().includes(drone.equipment.toLowerCase())) && moment(d1).isSame(moment(d2)))
+        return true;
+      else
+        return false;
     });
     setdronesMatched(x);
 
@@ -320,10 +347,11 @@ const DroneCatelog = (props) => {
               dateAdapter={AdapterDayjs}
             >
               <DatePicker
+              id="datePicker"
                 label={<b className="dateclass">Date</b>}
                 className="datepickerclass"
                 value={value}
-                minDate={new Date()}
+                // minDate={new Date()}
                 onChange={(newValue) => {
                   setValue(newValue);
                 }}
@@ -354,16 +382,18 @@ const DroneCatelog = (props) => {
         Search
       </button>
       <br />
-      <div>
+      <div className="container-fluid">
+
+      
+
         {noOfFieldsFilled === 5 && dronesMatched.length && showDrones && (
-          <div>
-            <Typography mt={2} ml={-100}>
-              {" "}
-              {dronesMatched.length} Drones Found
-            </Typography>
+          
+          <div className="row">
+            
             {dronesMatched.map((value, index) => {
               return (
-                <Box mt={2} ml={5}>
+                
+                <Box mt={2} ml={5} className="col-sm">
                   <div
                     className="row"
                     style={{
@@ -456,6 +486,7 @@ const DroneCatelog = (props) => {
                     {/* <Typography fontWeight={3} mt={2} ml={-12}> <b>$80</b> / per hour</Typography> */}
                   </div>
                 </Box>
+
               );
             })}
           </div>
@@ -469,6 +500,7 @@ const DroneCatelog = (props) => {
             />
           </div>
         )}
+        {dronesMatched.length==0 ? " drones found":""}
       </div>
     </Box>
   );

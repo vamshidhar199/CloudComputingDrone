@@ -29,7 +29,7 @@ const StepHeaderInformation = (props) => {
     return (
         <Box mt={5} >
             <Typography variant="h4" gutterBottom>
-                Step {props.step + 1}: {msg[props.step].head}
+                Step {props.step==4 ? props.step :props.step + 1}: {msg[props.step].head}
             </Typography>
             <Typography variant="body2" gutterBottom>
                 {msg[props.step].desc}

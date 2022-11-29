@@ -31,7 +31,9 @@ export default function HorizontalLinearStepper() {
       newSkipped = new Set(newSkipped.values());
       newSkipped.delete(activeStep);
     }
-
+    if(activeStep==2)
+    setActiveStep((prevActiveStep) => prevActiveStep + 2);
+    else
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setSkipped(newSkipped);
   };
@@ -104,7 +106,7 @@ export default function HorizontalLinearStepper() {
             </Button>
             <Box sx={{ flex: "1 1 auto" }} />
             <Button onClick={handleNext}>
-              {activeStep === steps.length - 1 ? "Finish" : "Next"}
+              {activeStep === steps.length - 1 ? "" : "Next"}
             </Button>
           </Box>
         </React.Fragment>
