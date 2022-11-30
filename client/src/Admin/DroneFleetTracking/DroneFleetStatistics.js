@@ -1,11 +1,13 @@
 import { Typography, Box, Badge, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Bar } from "react-chartjs-2";
 import { CircularProgressbar,buildStyles } from 'react-circular-progressbar';
 import "react-circular-progressbar/dist/styles.css";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Chart, registerables } from 'chart.js';
+import axios from "axios";
+
 // import Map from "./components/Map";
 Chart.register(...registerables);
 
@@ -21,6 +23,30 @@ export default function DroneFleetStatistics (){
           }
         ],
       };
+
+    const [droneData, setDroneData] = useState('')
+
+    useEffect(()=>{
+        var url = process.env.REACT_APP_MISSION_PLANNER_URL + 'flight_data_collect/get-drones/';
+        console.log(url)
+        axios.get(url)
+        .then((res)=>{
+            setDroneData(res.data)
+        })
+    },[])
+
+    const countDrone = (type) => {
+        var count = 0
+
+        for(let i=0; i<droneData.length; i++){
+            
+            if (droneData[i].status == type){
+                count += 1
+            }
+        }
+
+        return count
+    }
       
     return <>
         <Box width='100%' display='flex' flexDirection='column' marginTop='5%' justifyContent='flex-start'>
@@ -28,19 +54,19 @@ export default function DroneFleetStatistics (){
             <Box width='50%' display='flex' flexDirection='row' justifyContent='space-evenly' marginTop='3%' borderColor='grey' backgroundColor='#FDFDFD' borderRadius={3} p={2}>
                 <Box>
                     <Typography>Active</Typography>
-                    <Typography color='#85F24F' fontSize={35}>1</Typography>
+                    <Typography color='#85F24F' fontSize={35}>{countDrone('active')}</Typography>
                 </Box>
                 <Box>
                     <Typography>Stopped</Typography>
-                    <Typography color='#EE5A56' fontSize={35}>1</Typography>
+                    <Typography color='#EE5A56' fontSize={35}>{countDrone('stopped')}</Typography>
                 </Box>
                 <Box>
                     <Typography>Connected</Typography>
-                    <Typography color='#E5D83F' fontSize={35}>1</Typography>
+                    <Typography color='#E5D83F' fontSize={35}>{countDrone('connected')}</Typography>
                 </Box>
                 <Box>
                     <Typography>Registered</Typography>
-                    <Typography color='#6F56EE' fontSize={35}>4</Typography>
+                    <Typography color='#6F56EE' fontSize={35}>{countDrone('registered')}</Typography>
                 </Box>
             </Box>
             <Typography textAlign='start' marginLeft='5%' variant="h5" marginTop='5%'>Number of Drones by Service</Typography>

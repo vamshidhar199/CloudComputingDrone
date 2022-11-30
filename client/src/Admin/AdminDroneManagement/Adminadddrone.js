@@ -41,9 +41,13 @@ function AdminaddDrone(){
 
         axios.post(url, bodyFormData, {headers: {'Content-Type': 'multipart/form-data'}})
         .then((res)=>{
-            console.log(res)
+            if(res.status == 200){
+                navigate('/adminhome/dronemngt')
+            }
         })
-
+        .catch(function(err){
+            console.log(err)
+        })
     }
 
 

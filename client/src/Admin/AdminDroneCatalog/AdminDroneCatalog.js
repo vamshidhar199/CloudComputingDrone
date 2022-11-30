@@ -9,16 +9,18 @@ import "./AdminDroneCatalog.css";
 import img from '../../Assets/drone.png'
 import img1 from '../../Assets/plus.png'
 import { useNavigate } from 'react-router-dom';
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 function AdminDroneCatalog () {
 
+    const [value, setValue] = React.useState(null);
     const [common, setCommon] = useState('');
     const handleCommon = (e) => {
         setCommon(e.target.value)
     }
     const navigate = useNavigate();
-    const rows = [['DJI Mini SE Data Collection', '3-Axil Gimbal', '2.7K Camera', '30 Minutes Flight Time','8m/s Flight Speed','249 Grams','$80/hour'],
-    ['DJI Phantom Pro 4 Sureillance', '3-Axil Gimbal', '4K Camera', '30 Minutes Flight Time','13m/s Flight Speed','1375 grams','$100/hour'],
+    const rows = [['DJI Mini SE","Data Collection', '3-Axil Gimbal', '2.7K Camera', '30 Minutes Flight Time','8m/s Flight Speed','249 Grams','$80/hour'],
+    ['DJI Phantom Pro 4", "Sureillance', '3-Axil Gimbal', '4K Camera', '30 Minutes Flight Time','13m/s Flight Speed','1375 grams','$100/hour'],
     ['DJI Agras T20', 'Payload','20L Spray Tank', '6 L/min Spray Rate', '15 Minutes Flight Time','7 m/s Flight Speed','42.6 kilograms','$180/hour']];
     
     const [addDrone, setaddDrone] = useState('');
@@ -44,11 +46,15 @@ function AdminDroneCatalog () {
             <h3>Drone Catalog</h3>
             <p>Add, Update, or edit Drones in catalog</p>
             <Box width='100%' sx={{marginTop:'4%' ,border:'1px solid grey',p:2, display:'flex',flexDirection: 'row', borderRadius: 3, color:'white'}}>
-                <TextField label='Service' select value ={common} onChange={handleCommon} fullWidth>
+                <TextField label='Service' select value ={common} onChange={handleCommon} fullWidth p={2}>
                     <MenuItem value={1}>Data Collection</MenuItem>
+                    <MenuItem value={2}>Payload</MenuItem>
+                    <MenuItem value={3}>Surveillance</MenuItem>
                 </TextField>  
                 <TextField label='Price' select value ={common} onChange={handleCommon} fullWidth>
-                    <MenuItem value={250}>250</MenuItem>
+                    <MenuItem value={80}>80</MenuItem>
+                    <MenuItem value={100}>100</MenuItem>
+                    <MenuItem value={120}>180</MenuItem>
                 </TextField> 
                 <TextField label='Equipment' select value ={common} onChange={handleCommon} fullWidth>
                     <MenuItem value='ThermalCamera'>Thermal Camera</MenuItem>
@@ -59,6 +65,21 @@ function AdminDroneCatalog () {
                 <TextField label='Status' select value ={common} onChange={handleCommon} fullWidth>
                     <MenuItem value='Available'>Available</MenuItem>
                 </TextField>
+                <LocalizationProvider
+                    sx={{ width: "10%" }}
+                    dateAdapter={AdapterDayjs}
+                    >
+                    <DatePicker
+                    label="Date"
+                    width="10"
+                    marginLeft="10px"
+                    value={value}
+                    onChange={(newValue) => {
+                    setValue(newValue);
+                     }}
+                renderInput={(params) => <TextField {...params} />}
+                    />
+                </LocalizationProvider>
             </Box>
             <Box>
                 <Typography>3 Drones Found</Typography>
