@@ -48,7 +48,7 @@ function AdmineditDrone() {
             axios.post(url, bodyFormData, {headers: {'Content-Type': 'multipart/form-data'}})
             .then((res)=>{
                 if(res.status == 200){
-                    navigate('/adminhome/dronemngt')
+                    navigate('/adminhome/dronemngt', {state:{type:"success", body:"Deleted Successfully"}})
                 }
             })
             .catch(function(err){
@@ -69,7 +69,7 @@ function AdmineditDrone() {
                 if(res.status == 200){
                     setOpen(true)
                     timeout(5000);
-                    navigate('/adminhome/dronemngt')
+                    navigate('/adminhome/dronemngt', {state:{type:"success", body:"Updated Successfully"}})
                 }
             })
             .catch(function(err){
@@ -80,8 +80,7 @@ function AdmineditDrone() {
     }
 
     return <>
-    <Box display='flex' width='100%' backgroundColor='white'>
-    <Box mt = {20}  spacing={2} ml={6} width='80%' >
+    <Box mt = {20}  spacing={2} ml={5} width='80%' backgroundColor='white' borderRadius={4} p={4} height='60%'>
         <Snackbar >
             <Alert >
                 Drone Details Updated Successfully
@@ -99,9 +98,8 @@ function AdmineditDrone() {
             <TextField label='Brand' name="drone_maker" value = {dronedata.drone_maker} onChange={handleInput}/>
             </Stack>
             <Button sx={{marginLeft:'0%', marginTop:'5%'}} variant="outlined" onClick={()=>{ navigate("/adminhome/dronemngt")}}>Back</Button>
-            <Button sx={{marginLeft:'80%', marginTop:'5%'}} variant="outlined" onClick={()=> handleAction(location.state.type, location.state.drone_id) }>Submit</Button>
+            <Button sx={{marginLeft:'80%', marginTop:'5%'}} variant="outlined" onClick={()=> handleAction(location.state.type, location.state.drone_id) }>{location.state.type}</Button>
         </Box>
-    </Box>
     </Box>
     </>
 }
