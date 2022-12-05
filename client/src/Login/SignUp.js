@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TextField from "@mui/material/TextField";
 import { textAlign } from "@mui/system";
 import './SignUp.css'
+
 function SignUp(props) {
     const roles = [
         {
@@ -68,7 +69,7 @@ function SignUp(props) {
         <div className="row row-farmProfile">
         
           <div className="col-sm" style={{padding:"20px"}}>
-            <div className="row innerrow"> Farmer Details</div>
+            <div className="row innerrow"> Additional Details</div>
             <div className="row innerrow">
               {" "}
               <TextField
@@ -189,6 +190,9 @@ function SignUp(props) {
             </div>
             <div className="row innerrow" style={{justifyContent:"center"}}> <button className="farmProfileButton-Save" onClick={()=>{SaveData()}}> Save</button></div>
           </div>}
+          {
+            props.data.role=="Farmer" && ""
+          }
           {props.data.role=="Pilot" &&  <div className="col-sm" style={{padding:"20px"}}>
             <div className="row innerrow"> Pilot License Details</div>
             <div className="row innerrow">
