@@ -60,8 +60,8 @@ function AdminDroneManagement () {
                 {body}
             </Alert>
         </Snackbar>
-        <Typography sx={{textAlign:'left'}} variant="h4">Drone Management</Typography>
-        <Button sx={{marginRight:'86%', marginTop:'2%'}} variant="contained">Drone List</Button>
+        <Typography sx={{textAlign:'left'}} variant="h3">Drone Management</Typography>
+        {/* <Button sx={{marginRight:'86%', marginTop:'2%'}} variant="contained">Drone List</Button> */}
         <Box display='flex' flexDirection='row' justifyContent='space-between' marginTop={10}>
             <Typography  variant="h4" >Add, Edit and Update Drone</Typography>
             {/* Do not use href for navigation inside react application it causes refresh of the entire application */}

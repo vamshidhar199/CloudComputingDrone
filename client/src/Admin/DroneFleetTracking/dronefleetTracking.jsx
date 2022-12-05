@@ -18,9 +18,9 @@ function DroneFleet (){
     
 
     return <>
-        <Box width='100%' sx={{marginTop:'6%', backgroundColor:'white'}}>
+        <Box display='flex' marginTop={13} width='100%' flexDirection='column' marginLeft={4} backgroundColor='white' borderRadius={5}>
             <Box marginLeft='2%' marginTop='2%'>
-                <Box width='100%' flexDirection='column' display='flex' justifyContent='flex-start'>
+                <Box width='100%' flexDirection='column' display='flex' justifyContent='center'>
                     <Box display='flex'>
                         { option === '' && <Typography variant="h4">Drone Map</Typography>}
                         { option === '' && <Typography variant="h4" marginLeft='60%'>Welcome Admin</Typography> }
@@ -28,7 +28,7 @@ function DroneFleet (){
                         { option === 'FleetStatistics' && <Typography variant='h4'>Drone Cloud Tracking Statistics</Typography>}
                         { option === 'AR/VR' && <Typography variant='h4'>AR/VR Tracking</Typography>}
                     </Box>
-                    <Box width='60%' display='flex' flexDirection='row' justifyContent='space-evenly' marginTop='2%' borderRadius={3} border='1px solid grey' p={2} backgroundColor='#AAA4A3'>
+                    <Box width='60%' display='flex' flexDirection='row' justifyContent='space-evenly' marginTop='2%' borderRadius={3} border='1px solid grey' p={2} backgroundColor='#AAA4A3' >
                         <Button variant="contained" onClick={()=>setOption('FleetStatistics')} sx={{borderRadius:2}}>Fleet  Statistics</Button>
                         <Button variant="contained" onClick={()=>setOption('DroneMap')} sx={{borderRadius:2}}>Drone Map Tracking</Button>
                         <Button variant="contained" onClick={()=>setOption('AR/VR')} sx={{borderRadius:2}}>AR/VR Tracking</Button>

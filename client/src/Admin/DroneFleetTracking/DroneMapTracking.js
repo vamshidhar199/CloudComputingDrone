@@ -5,7 +5,6 @@ import { Map, Marker } from 'pigeon-maps'
 import axios from "axios";
 
 function DroneFleetData() {
-    const [dronedata, setDroneData] = useState('')
 
     const rows = [['Drone ID#','1','DJI Mini SE','Active','120 Meters','10 Minutes','(37.558,-122.048,100)','10m/s','10 meters','10:45am','1144','Data Collection','3671 Old Toll Road, Maiposa, CA 95338','West Plot A - Crop','Andy palmer','Half Day 10:00 AM','0','1'],
                   ['Drone ID#','2','DJI Mini SE','Registered','100 Meters','15 Minutes','(37.456,-122.345,120)','12m/s','8 meters','6:00 pm','567','Data Collection','1186 Roseville Pkwy, Roseville, CA 95678','East Plot B - Crop','Andy palmer','Half Day 12:00 AM','0','2'],
@@ -34,40 +33,32 @@ function DroneFleetData() {
     }
     const center = [37.3387, -121.8853]
 
-    useEffect(()=>{
-        var url = process.env.REACT_APP_MISSION_PLANNER_URL + 'flight_data_collect/get-drones/';
-        console.log(url)
-        axios.get(url)
-        .then((res)=>{
-            setDroneData(res.data)
-            console.log(dronedata)
-        })
-    },[])
-
     return <>
     <Box display='flex' flexDirection='column'>
         <Box display='flex' justifyContent='flex-start'>
-            <Typography>{dronedata.length} Drones Found</Typography>
+            <Typography>4 Drones Found</Typography>
         </Box>
         
-        <Box display='flex' flexDirection='row' marginTop='1%' width='100%' justifyContent='flex-start'>
+        <Box display='flex' flexDirection='row' marginTop='1%'>
             
-            {dronedata && dronedata.map((row)=>(
+            {rows.map((row)=>(
             <Button display='flex' onClick={()=> datahandle(row)}>
-                <Box border='1px solid blue' borderRadius={2} display='flex' flexDirection='row' p={2} color='black' width='60%'>
-                    <Box display='flex' justifyContent='flex-start' flexDirection='column'>
-                        <Typography>Drone ID #</Typography>
-                        <Typography>{row.drone_id}</Typography>
-                        <Typography p={0.5} border='1px solid red' borderRadius={1} backgroundColor='#FCCDCC' color={()=>chooseColor(row[3])}>{row.service_type}</Typography>
+                <Box border='1px solid blue' borderRadius={2} display='flex' flexDirection='row' p={2} color='black' width='100%' height='100%'>
+                
+                    <Box display='flex' flexDirection='column' width='60%'>
+                        <Typography>{row[0]}</Typography>
+                        <Typography>{row[1]}</Typography>
+                        <Typography>{row[2]}</Typography>
+                        <Typography p={0.5} border='1px solid red' borderRadius={1} backgroundColor='#FCCDCC' color={()=>chooseColor(row[3])}>{row[3]}</Typography>
                     </Box>
-                    <Box display='flex' justifyContent='flex-end'>
+                    <Box display='flex' justifyContent='flex-end' width='40%'>
                         <img src={img} width='70%' height='70%'/>
                     </Box>
                 </Box>
             </Button>
             ))}
         </Box>
-        {/* { data &&
+        { data &&
         <Box width='100%' display='flex' flexDirection='column' marginTop={6} marginLeft={2}>
             <Typography variant="h4" textAlign='start'>Drone ID #{data[1]}</Typography>
             <Box display='flex' flexDirection='row'>
@@ -104,7 +95,7 @@ function DroneFleetData() {
                 <Typography textAlign='start'>Flight ID #{data[17]}</Typography>
             </Box>
             </Box>
-        </Box>} */}
+        </Box>}
     </Box>
     </>
 }
