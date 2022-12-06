@@ -271,7 +271,7 @@ function DroneCatelog(props) {
       const d2=moment(drone.date).format('l')
       console.log(moment(d1).isSame(moment(d2)));
       console.log(drone.service.toLowerCase()+"--service--"+service.toLowerCase())
-      if(drone.service.toLowerCase()===service.toLowerCase() && drone.price<=Number(price) && drone.line1.split(" ")[0]===(brand) && (drone.equipment.toLowerCase().includes(equipment.toLowerCase()) || equipment.toLowerCase().includes(drone.equipment.toLowerCase())) && moment(d1).isSame(moment(d2)))
+      if(drone.service.toLowerCase()===service.toLowerCase() && drone.price<=Number(price) && drone.line1.split(" ")[0]===(brand) && (drone.equipment.toLowerCase().includes(equipment.toLowerCase()) || equipment.toLowerCase().includes(drone.equipment.toLowerCase())) )
         return true;
       else
         return false;
