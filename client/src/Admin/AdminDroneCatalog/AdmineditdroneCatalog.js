@@ -24,7 +24,7 @@ function AdmineditDroneCatalog (){
                 </Stack>
                 <Box display='flex' flexDirection='row' justifyContent='space-between' marginTop={5}>
                     <Button variant='contained' onClick={()=>navigate('/adminhome/dronecatalog')}>Back</Button>
-                    <Button variant='contained'>Next</Button>
+                    <Button variant='contained' onClick={()=>navigate('/adminhome/dronecatalog')}>Submit</Button>
                 </Box>
             </Box>
         </Box>
