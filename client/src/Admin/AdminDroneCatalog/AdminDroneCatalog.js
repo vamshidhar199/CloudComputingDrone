@@ -19,8 +19,8 @@ function AdminDroneCatalog () {
         setCommon(e.target.value)
     }
     const navigate = useNavigate();
-    const rows = [['DJI Mini SE","Data Collection', '3-Axil Gimbal', '2.7K Camera', '30 Minutes Flight Time','8m/s Flight Speed','249 Grams','$80/hour'],
-    ['DJI Phantom Pro 4", "Sureillance', '3-Axil Gimbal', '4K Camera', '30 Minutes Flight Time','13m/s Flight Speed','1375 grams','$100/hour'],
+    const rows = [['DJI Mini SE','Data Collection', '3-Axil Gimbal', '2.7K Camera', '30 Minutes Flight Time','8m/s Flight Speed','249 Grams','$80/hour'],
+    ['DJI Phantom Pro 4', 'Surveillance', '3-Axil Gimbal', '4K Camera', '30 Minutes Flight Time','13m/s Flight Speed','1375 grams','$100/hour'],
     ['DJI Agras T20', 'Payload','20L Spray Tank', '6 L/min Spray Rate', '15 Minutes Flight Time','7 m/s Flight Speed','42.6 kilograms','$180/hour']];
     
     const [addDrone, setaddDrone] = useState('');
@@ -97,7 +97,7 @@ function AdminDroneCatalog () {
                             </Box>
                             <Box width='40%'>
                                 <img src={img}/>
-                                <Button variant='contained' sx={{borderRadius:'20%', marginTop:'100%', marginLeft:'40%'}} onClick={()=>passEditParam(row)}>Edit</Button>
+                                <Button variant='contained' borderRadius={5} sx={{ marginTop:'100%', marginLeft:'40%'}} onClick={()=>passEditParam(row)}>Edit</Button>
                             </Box>
                         </Box>
                     ))}
