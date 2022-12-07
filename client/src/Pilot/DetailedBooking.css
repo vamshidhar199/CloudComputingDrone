@@ -48,6 +48,22 @@
     margin-bottom: 20px;
 }
 
+.noButtonPayment{
+    width: 250px;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* float: right; */
+    padding: 10px 10px;
+    background-color: #3d3e3f;
+    color: rgb(6, 6, 6);
+    height: 40px;
+    font-weight: 300;
+font-size: 14px;
+line-height: 22px;
+border-radius: 10px;
+cursor: not-allowed;
+}
+
 .buttonPayment{
     width: 250px;
     /* display: flex; */

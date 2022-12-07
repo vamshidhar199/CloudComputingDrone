@@ -14,13 +14,26 @@ function PilotBookings() {
         return { id, plot, type, service, time,status };
       }
     const [bookingData,setBookingData]=useState();
-      
+    const [CompletedBookingData,setCompletedBookingData]=useState();
+    const [bookingStatus,setBookingStatus]=useState();  
       useEffect(()=>{
+        const search = window.location.search; // could be '?foo=bar'
+        const params = new URLSearchParams(search);
+        const status = params.get('Status');
         const auth = JSON.parse(localStorage.getItem("auth"));
         const url='http://localhost:8080/agriDrone/getAllPilotBookings/'+auth.loginjson[0].userName
         axios.get(url).then((res)=>{
           const data=res.data.filter(x=>{if(x.status=="active") return x;})
-            setBookingData(data);
+          const inactiveData=res.data.filter(x=>{if(!(x.status=="active")) return x;})
+          if(status=="completed") {
+          setBookingData(inactiveData);
+          setBookingStatus("completed")
+          }
+          else{
+          setBookingData(data);
+          setBookingStatus("active")
+          }
+            setCompletedBookingData(inactiveData);
             setShowSpinner(false);
         })
       },[])
@@ -69,8 +82,8 @@ function PilotBookings() {
                 </div>
             </div>
         </div>}
-       { (!showDetails && !showSpinner) && <BasicTable detailedBooking={detailedBooking} rows={bookingData}/>}
-       { showDetails && <DetailedBooking rowId={rowId} row={row} closeDetailedBooking={closeDetailedBooking}/>}
+       { (!showDetails && !showSpinner) && <BasicTable detailedBooking={detailedBooking} rows={bookingData} completed={CompletedBookingData}/>}
+       { showDetails && <DetailedBooking bookingStatus={bookingStatus} rowId={rowId} row={row} closeDetailedBooking={closeDetailedBooking}/>}
 
         
 

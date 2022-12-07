@@ -271,7 +271,7 @@ function DroneCatelog(props) {
       const d2=moment(drone.date).format('l')
       console.log(moment(d1).isSame(moment(d2)));
       console.log(drone.service.toLowerCase()+"--service--"+service.toLowerCase())
-      if(drone.service.toLowerCase()===service.toLowerCase() && drone.price<=Number(price) && drone.line1.split(" ")[0]===(brand) && (drone.equipment.toLowerCase().includes(equipment.toLowerCase()) || equipment.toLowerCase().includes(drone.equipment.toLowerCase())) )
+      if(drone.service.toLowerCase()===service.toLowerCase() && drone.price<=Number(price) && drone.line1.split(" ")[0]===(brand) && (drone.equipment.toLowerCase().includes(equipment.toLowerCase()) || equipment.toLowerCase().includes(drone.equipment.toLowerCase())) && moment(d1).isSame(moment(d2)))
         return true;
       else
         return false;
@@ -351,7 +351,7 @@ function DroneCatelog(props) {
                 label={<b className="dateclass">Date</b>}
                 className="datepickerclass"
                 value={value}
-                // minDate={new Date()}
+                minDate={new Date()}
                 onChange={(newValue) => {
                   setValue(newValue);
                 }}

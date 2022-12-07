@@ -20,17 +20,18 @@ function Pilot() {
         <div className="col-sm-2"></div>
         <div className="col-sm-3 chips">
           <div className="row chips-row">
-            <Chips title={"Upcoming Service"} date={"29/12/2022"} serviceType={"Data Collection"}/>
+            <Chips title={"Upcoming Service"} date={"06/12/2022"} serviceType={"Data Collection"}/>
           </div>
           <div className="row">
-            <Chips title={"Upcoming Service"} date={"29/10/2022"} serviceType={"Data Collection"}/>
+            <Chips title={"Upcoming Service"} date={"06/12/2022"} serviceType={"Data Collection"}/>
           </div>
         </div>
         <div className="col-sm chips">
           <div className="row chips-row">
      
             <div className='col-sm'><button className='button' onClick={()=>{ navigate("/Schedule")}}>Edit Schedule</button></div>
-            <div className='col-sm'><button className='button' onClick={()=>{ navigate("/PilotBooking")}} >View Bookings</button></div>
+            <div className='col-sm'><button className='button' onClick={()=>{ navigate("/PilotBooking")}} >View Active Bookings</button></div>
+            <div className='col-sm'><button className='button' onClick={()=>{ navigate("/PilotBooking?Status=completed")}} >View Completed Bookings</button></div>
             <div className='col-sm'><button className='button' >Edit Profile</button></div>
             
           </div>

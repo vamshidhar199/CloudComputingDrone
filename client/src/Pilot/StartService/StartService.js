@@ -19,7 +19,7 @@ import axios from 'axios';
 
 function StartService(props) {
     const [open, setOpen] = useState(false);
-    const ip="18.214.98.229"
+    const ip="54.145.25.210"
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -70,7 +70,7 @@ function StartService(props) {
         console.log("landed succesfully")
       })
       
-    },200000);
+    },370000);
     console.log(searchParams.get("id"))
   }, []);
 

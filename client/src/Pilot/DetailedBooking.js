@@ -124,7 +124,7 @@ function DetailedBooking(props) {
                 Drone Name : {props.row.brand}
               </div>
               <div className="row" style={{ fontWeight: "600", color: "grey" }}>
-                Drone Id : {props.row.bookingId}
+                {/* Drone Id : {props.row.bookingId} */}
               </div>
               <div className="row" style={{ fontWeight: "600", color: "grey" }}>
                 Location{" "}
@@ -166,12 +166,12 @@ function DetailedBooking(props) {
           <div className="row billTable">
             <div className="col-sm-4">
               <div className="row buttonRow">
-                <button className="buttonPayment"  disabled={props.row.status!="active"?true:false} onClick={() => startServiceCall(true)}  >
+                <button className={props.bookingStatus!="active"?"noButtonPayment":"buttonPayment"}  disabled={props.bookingStatus!="active"?true:false} onClick={() => startServiceCall(true)}  >
                   Start service
                 </button>
               </div>
               <div className="row buttonRow">
-                <button className="buttonPayment" disabled={props.row.status!="active"?true:false} onClick={()=> markCompleted()} >
+                <button className={props.bookingStatus!="active"?"noButtonPayment":"buttonPayment"} disabled={props.bookingStatus!="active"?true:false} onClick={()=> markCompleted()} >
                   Mark as completed
                 </button>
               </div>
